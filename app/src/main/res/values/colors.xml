@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#009688</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue_200">#90caf9</color>
+    <color name="primary_color">#19C28B</color>
+    <color name="mint_green">#22F456</color>
+    <color name="color_primary_variant_lighter">#62f6bb</color>
+    <color name="color_primary_variant_darker">#00905e</color>
+    <color name="icon_background">#20FFFFFF</color>
+    <color name="bg_comment">#D2DCDB</color>
+
+    <color name="textview_button_background">#62f6bb</color>
+    <color name="textview_button_textcolor">#00905e</color>
+    <color name="secondary_blue">#677FF7</color>
+    <color name="color_secondary_blue_variant_lighter">#9eaeff</color>
+    <color name="color_secondary_blue_variant_darker">#2653c3</color>
+    <color name="secondary_red">#CA3B2A</color>
+    <color name="secondary_orange">#EFA32A</color>
+    <color name="text_color">#444444</color>
+    <color name="royal_blue">#246EE9</color>
+    <color name="scarlet_red">#FF2400</color>
+    <color name="blue_1">#35BBCA</color>
+    <color name="blue_2">#0191B4</color>
+    <color name="yellow_1">#F8D90F</color>
+    <color name="yellow_2">#D3DD18</color>
+    <color name="organe_1">#FE7A15
+    </color>
+    <color name="background_ryclerview">#f5f5f5</color>
+    <color name="black_1">#041B2D
+    </color> #FF9CDA
+
+    <color name="blue_3">#004E9A</color>
+    <color name="blue_4">#428CD4</color>
+    <color name="pink_1">#FF9CDA</color>
+    <color name="pink_2">#EA4492</color>
+</resources>

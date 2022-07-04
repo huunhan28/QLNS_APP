@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/text_color"
+        tools:context=".feature.discountdetails.DiscountDetailsFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+
+            <ImageView
+                android:id="@+id/image_view_discount_image"
+                android:src="@drawable/km2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                >
+
+            </ImageView>
+            <ImageView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                android:id="@+id/btn_back_discount_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+
+            <TextView
+                android:id="@+id/text_view_voucher_name"
+                style="@style/TextViewH1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:minLines="2"
+                android:text="KML1 | Giảm đến 20K cho đơn hàng từ 50K">
+
+            </TextView>
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                app:dividerColor="@color/black"
+                >
+
+            </com.google.android.material.divider.MaterialDivider>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    style="@style/TextViewH2"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hiệu lực đến"
+                    >
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_view_end_date_voucher"
+                    android:textAlignment="viewEnd"
+                    android:layout_weight="1"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    style="@style/TextViewH2"
+                    android:textColor="@color/black"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="08 Tháng 5 2022"
+                    >
+
+                </TextView>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_view_info_voucher"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/settings"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+
+                    >
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/text_view_header_info_voucher"
+                    style="@style/TextViewH1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Thông tin mã giảm giá"
+                    app:layout_constraintStart_toEndOf="@id/image_view_info_voucher"
+                    app:layout_constraintTop_toTopOf="@id/image_view_info_voucher">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_view_description_info_voucher"
+                    style="@style/TextViewH2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Voucher khuyến mãi 35% cho đơn hàng từ 50k tối đa giảm 20k cho 1 đơn hàng, mỗi tài khoản chỉ sử dụng được 1 lần"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/text_view_header_info_voucher"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_header_info_voucher">
+
+                </TextView>
+
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/button_user_voucher"
+                style="@style/ButtonNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Sử dụng voucher"
+                >
+
+            </Button>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+</layout>

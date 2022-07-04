@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_margin="1dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:strokeWidth="1dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="15dp"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:id="@+id/txt_product_sale_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/secondary_red"
+                        android:text="Sales 20%"
+                        android:textColor="@color/white">
+
+                    </TextView>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_margin="1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/img_product_item"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@color/white"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/burger" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        app:srcCompat="@drawable/star_rating" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="4.5 sao"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:visibility="invisible"
+                        android:textAlignment="viewEnd"
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.97km"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp">
+                    </TextView>
+                </LinearLayout>
+
+
+
+
+                <TextView
+                    android:id="@+id/txt_product_name_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="2"
+                    android:maxLines="3"
+                    android:text="3 Râu - Gà rán ớc ngọt"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textAlignment="viewStart"
+                        android:id="@+id/txt_product_price_item_sale"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="45.000đ"
+                        tools:ignore="RtlCompat"></TextView>
+
+                    <TextView
+                        android:textAlignment="viewEnd"
+                        android:id="@+id/txt_product_price_item"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="45.000đ"
+                        tools:ignore="RtlCompat"></TextView>
+                </LinearLayout>
+
+
+
+                    <TextView
+                        android:layout_margin="10dp"
+                        style="@style/TextViewButton"
+                        android:id="@+id/btn_add_product_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:text="Thêm">
+
+                    </TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

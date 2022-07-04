@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Food</string>
+    <string-array name="color_category">
+        <item> #fef4e5</item>
+        <item> #f9e4e4</item>
+        <item> #ebfee5</item>
+        <item> #e5f1fe</item>
+        <item> #fef4e5</item>
+    </string-array>
+    <string name="authorization_cloud_message" translatable="false">key=AAAADGEAvcU:APA91bHeDYkiY8nhe1lkoZcyHDNxjWPhp5tXEVl-w1wNqrpAlekus-PzWvUHEXsxwo58XcpRy0z6Z3z4VqhmHvzLBoHdLF5qDpNx5JmX0yksFBMikNwwGZrcVFQ9iBU4N1O8f3Aktc29</string>
+    <string name="mapbox_access_token" translatable="false">pk.eyJ1Ijoic2FuZzAxMCIsImEiOiJjbDJxYXprZnMwMDl3M2RxaHhhbTF4Zm44In0.0CEOCvmscPFaE79KvWPTIQ</string>
+    <string name="apikey_here_dot_com" translatable="false">LO44E-q6Z7Nr7s6oOTHozfjmobzRnfv_L9p-1QjTY8E</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="discount_description" translatable="false">Voucher khuyến mãi 35% cho đơn hàng từ  tối đa giảm 20k cho 1 đơn hàng, mỗi tài khoản chỉ sử dụng được 1 lần</string>
+    <array name="category_background">
+        <item>@drawable/category_background1</item>
+        <item>@drawable/category_background2</item>
+        <item>@drawable/category_background3</item>
+        <item>@drawable/category_background4</item>
+        <item>@drawable/category_background5</item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="otp_string_01" translatable="false">Mã xác thực gồm 5 số đã được gửi đến số</string>
+
+    <string-array name="ORDER_TIME_FILTER">
+        <item>Hôm nay</item>
+        <item>Tuần này</item>
+        <item>Tháng này</item>
+    </string-array>
+
+    <string-array name="ORDER_STATE_FILTER">
+        <item>Chưa duyệt</item>
+        <item>Đang giao</item>
+        <item>Đã giao</item>
+    </string-array>
+
+    <!--    map box-->
+    <string name="instruction" translatable="false">Click on map or buttons to change route</string>
+    <string name="driving_profile" translatable="false">%1$sm\nby car</string>
+    <string name="walking_profile" translatable="false">%1$sm\non foot</string>
+    <string name="cycling_profile" translatable="false">%1$sm\nby bike</string>
+    <string name="project_id2" translatable="false">Push notification</string>
+
+    <integer name="time_duration_max">200</integer>
+    <string name="profile">Profile</string>
+    <string name="changpassword">Chang password</string>
+    <string name="logout">Log out</string>
+    <string name="update">Update</string>
+    <string name="categories">Categories</string>
+    <string name="popular">Popular</string>
+    <string name="yourlocation">Your Location</string>
+    <string name="listorder">List Order</string>
+    <string name="changelanguage">Change Language</string>
+
+</resources>

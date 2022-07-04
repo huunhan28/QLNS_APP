@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/text_view_title_payment_type"
+        style="@style/TextViewH1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn phương thức thanh toán"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <RadioGroup
+        android:id="@+id/radio_bottom_group_payment_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title_payment_type">
+
+        <RadioButton
+            android:id="@+id/rdb_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_cash"
+            android:text="Tiền mặt">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rdb_vn_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_credit_card"
+            android:text="VNPay">
+
+        </RadioButton>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/text_view_close_dialog"
+        style="@style/TextViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đóng"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_bottom_group_payment_type">
+
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

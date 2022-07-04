@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/relative_layout_order_admin_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/image_view_order_state"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@id/linear_info_orders_admin"
+        android:layout_alignBottom="@id/linear_info_orders_admin"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/meal_50"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/linear_info_orders_admin"
+        android:padding="10dp"
+        android:layout_toRightOf="@id/image_view_order_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            style="@style/TextViewH1"
+            android:id="@+id/text_view_id_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID: 52"
+            >
+
+        </TextView>
+        <TextView
+            style="@style/TextViewH2"
+            android:id="@+id/text_view_state_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái: Chưa duyệt"
+            >
+
+        </TextView>
+
+        <TextView
+            style="@style/TextViewH2"
+            android:id="@+id/text_view_user_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Người đặt: Trung Hiền"
+            >
+
+        </TextView>
+
+
+
+        <TextView
+            style="@style/TextViewH2"
+            android:id="@+id/text_view_date_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="22/2/2022 11:00am"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+</RelativeLayout>

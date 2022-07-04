@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:id="@+id/relative_filter_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_order_time_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_order_time_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:checkedChip="@+id/chip_today_order_time_filter"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_today_order_time_filter"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hôm nay"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"></com.google.android.material.chip.Chip>
+
+                    <com.google.android.material.chip.Chip
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:id="@+id/chip_week_order_time_filter"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tuần này"></com.google.android.material.chip.Chip>
+
+                    <com.google.android.material.chip.Chip
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:id="@+id/chip_month_time_order_filter"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tháng này"></com.google.android.material.chip.Chip>
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_order_state_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/scroll_order_time_filter"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_order_state_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:checkedChip="@+id/chip_unapproved_state_order"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_unapproved_state_order"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chưa duyệt"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"></com.google.android.material.chip.Chip>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_approved_state_order"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đang giao"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"></com.google.android.material.chip.Chip>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_shiped_state_order"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đã giao"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"></com.google.android.material.chip.Chip>
+
+
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_orders_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/relative_filter_order"
+            tools:listitem="@layout/order_state_item">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </RelativeLayout>
+</layout>

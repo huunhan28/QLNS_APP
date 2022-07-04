@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <ImageView
+
+            android:id="@+id/imageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/cancel" />
+
+
+        <TextView
+            style="@style/CustomTextStyleH1"
+            android:id="@+id/txt_title_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Save error" />
+
+        <TextView
+            style="@style/CustomTextStyleH2"
+            android:id="@+id/txt_content_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Opp! Something wrong, try one more time" />
+
+        <Button
+            android:id="@+id/btn_try_again_error"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            style="@style/CustomButton"
+            android:background="@drawable/background_button_red"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="Đóng"
+             />
+
+
+    </LinearLayout>
+</layout>
