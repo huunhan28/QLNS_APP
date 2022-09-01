@@ -13,11 +13,14 @@ import com.example.food.Domain.Response.OTPResponse;
 import com.example.food.Domain.Response.OrderDetailResponse;
 import com.example.food.Domain.Response.OrderResponse;
 import com.example.food.Domain.Response.ProductResponse;
+import com.example.food.Domain.Response.ResponseObject;
 import com.example.food.Domain.Response.UpdatePasswordResponse;
 import com.example.food.network.Listener.CartResponseListener;
 import com.example.food.network.Listener.CategoryResponseListener;
 import com.example.food.network.Listener.DeleteCartResponseListener;
 import com.example.food.network.Listener.DiscountResponseListener;
+import com.example.food.network.Listener.GetEmailWithUsernameResponseListener;
+import com.example.food.network.Listener.GetOtpWithEmailResponseListener;
 import com.example.food.network.Listener.InsertCartResponseListener;
 import com.example.food.network.Listener.InsertOrderDetailResponseListener;
 import com.example.food.network.Listener.InsertOrderResponseListener;
@@ -33,6 +36,7 @@ import com.example.food.util.AppUtils;
 
 import java.util.ArrayList;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,6 +49,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public class Api {
     Context context;
@@ -392,6 +397,46 @@ public class Api {
         });
     }
 
+    public void getOtpwithEmail(GetOtpWithEmailResponseListener listener,String gmail){
+        CallGetOtpwithEmail callGetOtpwithEmail=retrofit.create(CallGetOtpwithEmail.class);
+        Call<ResponseObject> call= callGetOtpwithEmail.getOtpwithEmail(gmail);
+        call.enqueue(new Callback<ResponseObject>() {
+            @Override
+            public void onResponse(Call<ResponseObject> call, Response<ResponseObject> response) {
+                if (!response.isSuccessful()) {
+                    listener.didError(response.message());
+                    return;
+                }
+                listener.didFetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseObject> call, Throwable t) {
+                listener.didError(t.getMessage());
+            }
+        });
+    }
+
+    public void getEmailWithUsername(GetEmailWithUsernameResponseListener listener, String username){
+        CallGetEmailWithUsername callGetEmailWithUsername=retrofit.create(CallGetEmailWithUsername.class);
+        Call<ResponseObject> call= callGetEmailWithUsername.getEmailFromUsername(username);
+        call.enqueue(new Callback<ResponseObject>() {
+            @Override
+            public void onResponse(Call<ResponseObject> call, Response<ResponseObject> response) {
+                if (!response.isSuccessful()) {
+                    listener.didError(response.message());
+                    return;
+                }
+                listener.didFetch(response.body(), response.message());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseObject> call, Throwable t) {
+                listener.didError(t.getMessage());
+            }
+        });
+    }
+
     private interface CallAllCategory{
         @GET("api/v1/Categories")
         Call<ArrayList<Category>> getListCategoryDomain();
@@ -472,6 +517,14 @@ public class Api {
         Call<DiscountResponse> getDiscountById(@Path(value = "id") String id);
     }
 
+    private interface CallGetOtpwithEmail{
+        @GET("api/v1/Users/sendOTPwithMail")
+        Call<ResponseObject> getOtpwithEmail(@Query(value = "email") String email);
+    }
 
+    private interface CallGetEmailWithUsername{
+        @GET("api/v1/Users/getEmailFromUsername")
+        Call<ResponseObject> getEmailFromUsername(@Query(value = "username") String username);
+    }
 
 }

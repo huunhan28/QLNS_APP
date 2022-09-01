@@ -86,43 +86,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
-                <ImageView
-                    android:id="@+id/image_view_ic_location"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
 
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/ic_location"
-                    app:layout_constraintBottom_toBottomOf="@id/materialCardView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_your_location_label">
-
-                </ImageView>
 
                 <TextView
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:id="@+id/text_view_your_location_label"
+                    android:id="@+id/text_view_welcome_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-                    android:text="@string/yourlocation"
-                    app:layout_constraintBottom_toBottomOf="@id/image_view_ic_location"
+                    tools:text="@string/yourlocation"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/materialCardView"
                     app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintVertical_chainStyle="spread">
 
                 </TextView>
-                <TextView
-                    android:id="@+id/text_view_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:text=""
-                    app:layout_constraintStart_toEndOf="@id/image_view_ic_location"
-                    app:layout_constraintBottom_toBottomOf="@id/image_view_ic_location"
-                    app:layout_constraintTop_toTopOf="@id/image_view_ic_location" />
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -150,6 +130,8 @@
                         android:id="@+id/slide_discount_home_screen"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         app:sliderAutoCycleDirection="right"
                         app:sliderAutoCycleEnabled="true"
                         app:sliderIndicatorGravity="center_horizontal|bottom"
@@ -273,7 +255,9 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:background="@color/background_ryclerview"
-                        android:padding="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="10dp"
                         android:id="@+id/recyclerView_popular_home_screen"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -442,10 +426,10 @@
                 elevation="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#ff5a00"
+                android:backgroundTint="@color/primary"
                 android:src="@drawable/shopping_cart"
                 android:tint="#ffffff"
-                app:backgroundTint="#ff5e00"
+
                 app:layout_anchor="@id/app_bar"
                 app:maxImageSize="30dp">
 

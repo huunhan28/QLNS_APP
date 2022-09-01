@@ -54,14 +54,14 @@ public class AdminActivity extends AppCompatActivity {
 //                appBarLayout.setVisibility(View.VISIBLE);
                 bottomAppBar.setVisibility(View.VISIBLE);
                 fabCart.setVisibility(View.VISIBLE);
-                toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(true);
+//                toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(true);
                 toolbar.getMenu().findItem(R.id.menu_item_pdf_admin).setVisible(false);
                 switch (item.getItemId()){
                     case R.id.menu_home_item:
                         viewPager2.setCurrentItem(0);
                         break;
                     case R.id.menu_setting_item:
-                        toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(false);
+                        //toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(false);
 
                         viewPager2.setCurrentItem(2);
                         break;
@@ -84,7 +84,7 @@ public class AdminActivity extends AppCompatActivity {
 //                appBarLayout.setVisibility(View.VISIBLE);
                 bottomAppBar.setVisibility(View.VISIBLE);
                 fabCart.setVisibility(View.VISIBLE);
-                toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(true);
+                //toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(true);
                 toolbar.getMenu().findItem(R.id.menu_item_pdf_admin).setVisible(false);
                 switch (position){
                     case 0:
@@ -95,7 +95,7 @@ public class AdminActivity extends AppCompatActivity {
                         navigationView.getMenu().findItem(R.id.menu_cart_item).setChecked(true);
                         break;
                     case 2:
-                        toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(false);
+                        //toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(false);
 //                        appBarLayout.setVisibility(View.GONE);
                         navigationView.getMenu().findItem(R.id.menu_setting_item).setChecked(true);
                         break;
@@ -130,16 +130,16 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menu_item_log_out_admin:
-//                AppUtils.deleteAccount2(this);
-//                Intent i = new Intent(this, HomeActivity.class);
-//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(i);
-                break;
-            case R.id.menu_item_profile:
-                toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(false);
-                viewPager2.setCurrentItem(2);
-                break;
+//            case R.id.menu_item_log_out_admin:
+////                AppUtils.deleteAccount2(this);
+////                Intent i = new Intent(this, HomeActivity.class);
+////                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                startActivity(i);
+//                break;
+//            case R.id.menu_item_profile:
+//                //toolbar.getMenu().findItem(R.id.menu_item_profile).setVisible(false);
+//                viewPager2.setCurrentItem(2);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }

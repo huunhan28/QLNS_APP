@@ -22,7 +22,7 @@
     </array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="otp_string_01" translatable="false">Mã xác thực gồm 5 số đã được gửi đến số</string>
+    <string name="otp_string_01" translatable="false">Mã xác thực gồm 5 số đã được gửi đến email</string>
 
     <string-array name="ORDER_TIME_FILTER">
         <item>Hôm nay</item>
@@ -53,5 +53,7 @@
     <string name="yourlocation">Your Location</string>
     <string name="listorder">List Order</string>
     <string name="changelanguage">Change Language</string>
+    <string name="welcome">Welcome</string>
+    <string name="manager">Manager</string>
 
 </resources>

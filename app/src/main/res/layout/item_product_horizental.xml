@@ -51,7 +51,7 @@
                         android:id="@+id/txt_product_sale_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/secondary_red"
+                        android:background="@color/primary"
                         android:text="Sales 20%"
                         android:textColor="@color/white">
 

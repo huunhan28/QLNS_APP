@@ -32,6 +32,7 @@ import okhttp3.RequestBody;
 public class EditProfileFragmentAdmin extends AppCompatActivity {
 
     private String KEY_AVT = "file";
+    private User userTemp;
 
     private FragmentEditProfileScreenBinding binding;
     private String CODE = "choose_image_avt";
@@ -163,7 +164,7 @@ public class EditProfileFragmentAdmin extends AppCompatActivity {
 //                .load(user.getImageUser().getLink())
 //                .into(binding.imgAvtEditProfileScreen);
         binding.editTextNameEditProfile.setText(user.getName());
-        binding.editTextEmailEditProfile.setText(user.getEmail());
+        userTemp = user;
         binding.editTextAddressEditProfile.setText(user.getAddress());
     }
 
@@ -171,7 +172,7 @@ public class EditProfileFragmentAdmin extends AppCompatActivity {
         if (checkInput()) {
             return new UserRequestForUpdate(
                     binding.editTextNameEditProfile.getText().toString(),
-                    binding.editTextEmailEditProfile.getText().toString(),
+                    userTemp.getEmail().toString(),
                     binding.editTextAddressEditProfile.getText().toString()
             );
         } else return null;

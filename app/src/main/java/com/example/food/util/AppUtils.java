@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
+import com.example.food.Domain.LocationDomain;
 import com.example.food.R;
 import com.example.food.Domain.User;
 import com.example.food.feature.adminhome.OrderDetailsFragment;
@@ -43,9 +45,9 @@ import java.util.concurrent.Callable;
 public class AppUtils {
 
 
-//    public static String BASE_URL = "http://192.168.1.10:8080/";
-//    public static String BASE_URL = "http://192.168.143.130:8080/";
-        public static String BASE_URL="http://192.168.1.3:8080/";
+    public static String BASE_URL = "http://192.168.1.10:8080/";
+//    public static String BASE_URL = "http://10.10.1.126:8080/";
+//        public static String BASE_URL="http://192.168.0.117:8080/";
       //  public static String BASE_URL="http://172.25.176.1:8080/";
     public static String[] ROLES = {"ROLE_USER", "ROLE_ADMIN"};
     public static int PASS_LOGIN = 0;
@@ -65,7 +67,8 @@ public class AppUtils {
 
     public static final String ACCOUNT = "account";
     public static final String PASSWORD = "password";
-        public static final String NUMBER_OF_TIME_LAUNCH_APP = "launchApp";
+    public static final String NUMBER_OF_TIME_LAUNCH_APP = "launchApp";
+    public static final String LOCATION = "location";
 
     public static void saveAccount(SharedPreferences share, User user) {
         SharedPreferences.Editor editor = share.edit();
@@ -106,6 +109,30 @@ public class AppUtils {
     public static void saveAccount2(Context context, User user) {
         SharedPreferences.Editor editor = context.getSharedPreferences(ACCOUNT, 0).edit();
         editor.putString(ACCOUNT, new Gson().toJson(user));
+        editor.commit();
+    }
+
+    public static LocationDomain getLocation(Context context) {
+        String location = context.getSharedPreferences(LOCATION, 0).getString(LOCATION, "");
+        if (location.equalsIgnoreCase("")) return null;
+        return new Gson().fromJson(location, LocationDomain.class);
+    }
+
+    public static void saveLocation(Context context, LocationDomain location) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(LOCATION, 0).edit();
+        editor.putString(LOCATION, new Gson().toJson(location));
+        editor.commit();
+    }
+
+    public static LocationDomain getLocationShop(Context context) {
+        String location = context.getSharedPreferences(LOCATION, 0).getString(LOCATION, "");
+        if (location.equalsIgnoreCase("")) return null;
+        return new Gson().fromJson(location, LocationDomain.class);
+    }
+
+    public static void saveLocationShop(Context context, LocationDomain location) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(LOCATION, 0).edit();
+        editor.putString(LOCATION, new Gson().toJson(location));
         editor.commit();
     }
 

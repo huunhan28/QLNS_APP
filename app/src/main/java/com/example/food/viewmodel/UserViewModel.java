@@ -56,8 +56,8 @@ public class UserViewModel extends AndroidViewModel {
                 .observeOn(AndroidSchedulers.mainThread());
 
     }
-    public Observable<Response<UserDTO>> makeApiCallSignUp(String username, String name, String password){
-        return userRepository.signup(new RequestSignup(username, name, password))
+    public Observable<Response<UserDTO>> makeApiCallSignUp(String username,String phone,  String name, String password, String address){
+        return userRepository.signup(new RequestSignup(username,phone, name, password,address))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
 

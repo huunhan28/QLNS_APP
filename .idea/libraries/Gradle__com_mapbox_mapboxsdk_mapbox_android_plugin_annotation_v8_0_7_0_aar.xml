@@ -1,13 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v8:0.7.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f9e0247470eea0bfbbe925f74dc9ea1a/transformed/jetified-mapbox-android-plugin-annotation-v8-0.7.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f9e0247470eea0bfbbe925f74dc9ea1a/transformed/jetified-mapbox-android-plugin-annotation-v8-0.7.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f9e0247470eea0bfbbe925f74dc9ea1a/transformed/jetified-mapbox-android-plugin-annotation-v8-0.7.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/8a26b7b82563ee1b68cfc31b21f0e00c/transformed/jetified-mapbox-android-plugin-annotation-v8-0.7.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/8a26b7b82563ee1b68cfc31b21f0e00c/transformed/jetified-mapbox-android-plugin-annotation-v8-0.7.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/8a26b7b82563ee1b68cfc31b21f0e00c/transformed/jetified-mapbox-android-plugin-annotation-v8-0.7.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-plugin-annotation-v8/0.7.0/1cf3094a1c5ebc8808d523f20a3a31e7ba87ab08/mapbox-android-plugin-annotation-v8-0.7.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-plugin-annotation-v8/0.7.0/1cf3094a1c5ebc8808d523f20a3a31e7ba87ab08/mapbox-android-plugin-annotation-v8-0.7.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

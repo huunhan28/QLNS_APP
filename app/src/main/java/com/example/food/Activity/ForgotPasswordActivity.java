@@ -23,6 +23,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     FragmentForgotPasswordBinding binding;
     UserViewModel userViewModel;
     String title;
+    String next;
 
 
     @Override
@@ -31,6 +32,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         binding = FragmentForgotPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        next = getIntent().getStringExtra("next");
         setEvents();
         observer();
 
@@ -43,9 +45,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             checkSDT(sdt);
         });
         title = getIntent().getStringExtra("title");
-        if (title != null) {
+        if (title != "Quên mật khẩu") {
             binding.textViewTitle.setText(title);
-            binding.textViewDescription.setText("Vui lòng nhập số điện thoại để xác thực đăng ký");
+            binding.textViewDescription.setText("Vui lòng nhập email để xác thực đăng ký");
         } else {
             binding.textViewTitle.setText("Quên mật khẩu");
         }
@@ -65,7 +67,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }
             } else {
                 if (aBoolean) {
-                    binding.textInputLayoutPhone.setError("Số điện thoại đã đăng ký tài khoản");
+                    binding.textInputLayoutPhone.setError("Email đã đăng ký tài khoản");
                 } else {
                     binding.textInputLayoutPhone.setErrorEnabled(false);
                     check = true;
@@ -75,6 +77,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 if (phoneNumber != null) {
                     Intent intent = new Intent(this, OTPPhoneActivity.class);
                     intent.putExtra("phoneNumber", phoneNumber);
+                    intent.putExtra("next", next);
                     startActivity(intent);
                 }
             }

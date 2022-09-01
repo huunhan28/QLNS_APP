@@ -35,29 +35,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hôm nay"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"></com.google.android.material.chip.Chip>
+                        android:textStyle="bold"></com.google.android.material.chip.Chip>
 
                     <com.google.android.material.chip.Chip
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
                         android:id="@+id/chip_week_order_time_filter"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tuần này"></com.google.android.material.chip.Chip>
+                        android:text="Tuần này"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"></com.google.android.material.chip.Chip>
 
                     <com.google.android.material.chip.Chip
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
                         android:id="@+id/chip_month_time_order_filter"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tháng này"></com.google.android.material.chip.Chip>
+                        android:text="Tháng này"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"></com.google.android.material.chip.Chip>
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 

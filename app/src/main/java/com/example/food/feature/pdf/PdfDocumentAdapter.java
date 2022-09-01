@@ -65,14 +65,14 @@ public class PdfDocumentAdapter extends PrintDocumentAdapter {
             }
         } catch (Exception e) {
             writeResultCallback.onWriteFailed(e.getMessage());
-            Log.d("TNT_HIEN", e.getMessage());
+            Log.d("TNT_Nhan", e.getMessage());
             e.printStackTrace();
         }finally {
             try {
                 in.close();
                 out.close();
             } catch (IOException e) {
-                Log.d("TNT_HIEN:", ""+ e.getMessage());
+                Log.d("TNT_Nhan:", ""+ e.getMessage());
                 e.printStackTrace();
             }
 

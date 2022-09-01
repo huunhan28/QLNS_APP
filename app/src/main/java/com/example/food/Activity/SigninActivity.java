@@ -1,11 +1,17 @@
 package com.example.food.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -24,6 +30,7 @@ import dmax.dialog.SpotsDialog;
 public class SigninActivity extends AppCompatActivity {
     public static final String TAG = SigninFragment.class.getName();
 
+    LocationManager locationManager;
     FragmentSigninBinding binding;
     Api api;
     private UserViewModel userViewModel;
@@ -47,9 +54,14 @@ public class SigninActivity extends AppCompatActivity {
     }
 
     private void setEvents() {
-        binding.tvForgotPassword.setOnClickListener(view -> startActivity(new Intent(this, ForgotPasswordActivity.class)));
+        binding.tvForgotPassword.setOnClickListener(view ->{
+            Intent intent = new Intent(this, ForgotPasswordActivity.class);
+            intent.putExtra("title", "Quên mật khẩu");
+            intent.putExtra("next", "forgotpass");
+            startActivity(intent);
+        }
+        );
         binding.btnSignIn.setOnClickListener(view -> {
-            alertDialog.show();
             singinProcess(binding.editTextUsernameSignIn.getText().toString(),
                     binding.editTextPasswordSignIn.getText().toString());
         });
@@ -58,7 +70,8 @@ public class SigninActivity extends AppCompatActivity {
 
     private void navigateToEnterPhoneNumber() {
         Intent intent = new Intent(this, ForgotPasswordActivity.class);
-        intent.putExtra("title", "Đăng ký số điện thoại");
+        intent.putExtra("title", "Đăng ký email");
+        intent.putExtra("next", "signup");
         startActivity(intent);
     }
 

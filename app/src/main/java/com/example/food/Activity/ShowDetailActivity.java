@@ -84,9 +84,9 @@ public class ShowDetailActivity extends AppCompatActivity {
         commentViewModel.callGetCommentOfProudct(productId)
                 .subscribe(response -> {
                     if (response.isSuccessful()) {
-                        commentAdapter.submitList(response.body());
+                        commentAdapter.setData(response.body());
                     } else {
-                        commentAdapter.submitList(null);
+                        commentAdapter.setData(null);
                     }
                 });
     }
@@ -299,7 +299,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         // set up recycler view comment
 
         userRepository = RetroInstance.getRetrofitClient(this).create(UserRepository.class);
-        commentAdapter = new CommentAdapter(Comment.itemCallback, userRepository);
+        commentAdapter = new CommentAdapter(new ArrayList<Comment>(),userRepository);
         recyclerViewCommentOfProduct.setHasFixedSize(true);
         recyclerViewCommentOfProduct.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerViewCommentOfProduct.addItemDecoration(

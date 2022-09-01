@@ -241,8 +241,8 @@
     <TextView
         android:id="@+id/addToCartBtn"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_margin="16dp"
+        android:layout_height="30dp"
+        android:layout_margin="8dp"
         android:text="Thêm vào giỏ hàng"
         android:background="@drawable/organ_button_background"
         android:gravity="center"

@@ -1,10 +1,12 @@
 package com.example.food.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,25 +20,34 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import com.example.food.Api.Api;
+import com.example.food.Domain.Response.ResponseObject;
+import com.example.food.Domain.User;
 import com.example.food.R;
 import com.example.food.databinding.FragmentOtpPhoneBinding;
+import com.example.food.network.Listener.DeleteCartResponseListener;
+import com.example.food.network.Listener.GetEmailWithUsernameResponseListener;
+import com.example.food.network.Listener.GetOtpWithEmailResponseListener;
+import com.example.food.util.AppUtils;
 import com.example.food.viewmodel.UserViewModel;
 
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class OTPPhoneActivity extends AppCompatActivity {
     FragmentOtpPhoneBinding binding;
-    UserViewModel userViewModel;
+    //UserViewModel userViewModel;
     String next;
-
+    Api api;
+    String otpFromServer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentOtpPhoneBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        api = new Api(this);
+        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setTimer();
         setEvents();
         callApi();
@@ -58,7 +69,7 @@ public class OTPPhoneActivity extends AppCompatActivity {
 
             public void onFinish() {
                 binding.txtResendOtp.setVisibility(View.VISIBLE);
-                binding.txtTime.setText("Hết thời gian!");
+                //binding.txtTime.setText("Hết thời gian!");
             }
 
         }.start();
@@ -77,24 +88,55 @@ public class OTPPhoneActivity extends AppCompatActivity {
 //        }, 0, 1000);
     }
 
-    private void callApi() {
-        if(getIntent()!=null){
-            String phoneNumber = getIntent().getStringExtra("phoneNumber");
-            binding.txtPhoneNumber.setText(phoneNumber);
+    private final GetOtpWithEmailResponseListener getOtpWithEmailResponseListener = new GetOtpWithEmailResponseListener() {
+        @Override
+        public void didFetch(ResponseObject response, String message) {
+            otpFromServer = response.getData().toString();
         }
-        userViewModel.sendOTPToPhoneNumber(binding.txtPhoneNumber.getText().toString());
+
+        @Override
+        public void didError(String message) {
+//            Toast.makeText(CartListActivity.this,"Call api delete cart error"+message.toString(),Toast.LENGTH_SHORT).show();
+
+            Log.d("zzz", message.toString());
+        }
+    };
+
+    private final GetEmailWithUsernameResponseListener getEmailWithUsernameResponseListener = new GetEmailWithUsernameResponseListener() {
+        @Override
+        public void didFetch(ResponseObject response, String message) {
+            api.getOtpwithEmail(getOtpWithEmailResponseListener,response.getData().toString());
+        }
+
+        @Override
+        public void didError(String message) {
+//            Toast.makeText(CartListActivity.this,"Call api delete cart error"+message.toString(),Toast.LENGTH_SHORT).show();
+
+            Log.d("zzz", message.toString());
+        }
+    };
+
+    private void callApi() {
+
+        String phoneNumber = getIntent().getStringExtra("phoneNumber");
+        binding.txtPhoneNumber.setText(phoneNumber);
+
+        //api.getEmailWithUsername(getEmailWithUsernameResponseListener,phoneNumber);
+        api.getOtpwithEmail(getOtpWithEmailResponseListener,phoneNumber);
+
+        //userViewModel.sendOTPToPhoneNumber(binding.txtPhoneNumber.getText().toString());
     }
 
     private void setEvents() {
         next=getIntent().getStringExtra("next");
-        if(next!=null){
-            next="signin";
+        if(next.equals("signup")){
+            next="signup";
         }else {
             next = "forgotpass";
         }
         binding.btnConfirm.setOnClickListener(view -> {
             String otp = binding.editTextOTP.getText().toString();
-            if(userViewModel.checkOTP(otp)){
+            if(Objects.equals(otpFromServer, otp)){
                 Intent intent;
                 if(next.equals("forgotpass")){
                     intent = new Intent(this, ResetPasswordActivity.class);

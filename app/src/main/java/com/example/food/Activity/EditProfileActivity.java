@@ -185,7 +185,7 @@ public class EditProfileActivity extends AppCompatActivity {
 //                .load(user.getImageUser().getLink())
 //                .into(binding.imgAvtEditProfileScreen);
         binding.editTextNameEditProfile.setText(user.getName());
-        binding.editTextEmailEditProfile.setText(user.getEmail());
+        userLocal = user;
         binding.editTextAddressEditProfile.setText(user.getAddress());
     }
 
@@ -193,7 +193,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (checkInput()) {
             return new UserRequestForUpdate(
                     binding.editTextNameEditProfile.getText().toString(),
-                    binding.editTextEmailEditProfile.getText().toString(),
+                    userLocal.getEmail().toString(),
                     binding.editTextAddressEditProfile.getText().toString()
             );
         } else return null;

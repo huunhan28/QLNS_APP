@@ -11,6 +11,7 @@ import android.content.res.Configuration;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.LocaleList;
 import android.text.Editable;
@@ -30,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.food.Domain.Discount;
+import com.example.food.Domain.LocationDomain;
 import com.example.food.Domain.Product;
 import com.example.food.R;
 import com.example.food.databinding.FragmentHomeSceenBinding;
@@ -44,10 +46,10 @@ import com.example.food.util.AppUtils;
 import com.example.food.util.ItemMargin;
 
 import com.example.food.viewmodel.UserViewModel;
-import com.pusher.client.Pusher;
-import com.pusher.client.PusherOptions;
+//import com.pusher.client.Pusher;
+//import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.PusherEvent;
+//import com.pusher.client.channel.PusherEvent;
 import com.pusher.client.channel.SubscriptionEventListener;
 import com.pusher.client.connection.ConnectionEventListener;
 import com.pusher.client.connection.ConnectionState;
@@ -67,7 +69,7 @@ import dmax.dialog.SpotsDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
-public class HomeActivity extends AppCompatActivity implements DiscountAdapter.ClickItem, LocationListener {
+public class HomeActivity extends AppCompatActivity implements DiscountAdapter.ClickItem {
     private FragmentHomeSceenBinding binding;
     private HomeViewModel homeViewModel;
     private CategoryAdapter adapterCate;
@@ -76,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
     private RecyclerView rvCate, rvPopular, rvDiscount;
     private SliderView slideDiscount;
     private User user;
-    private TextView txtName;
+    private TextView txtName,txtWelcome;
     private CircleImageView imgAvt;
     private UserViewModel userViewModel;
     private MapViewModel mapViewModel;
@@ -92,6 +94,8 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
     private AlertDialog progressBarDialog;
     private TextView btnSeeAllCategoriesHomeScreen;
     private FloatingActionButton cartBtn;
+    LocationManager locationManager;
+    AlertDialog alertDialog;
 
 
     @Override
@@ -111,42 +115,8 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
         loadDiscount();
         loadCategories();
         loadProducts();
-        setUpPusher();
+//        setUpPusher();
 
-
-    }
-
-    private void setUpPusher() {
-        PusherOptions options = new PusherOptions();
-        options.setCluster("ap1");
-
-        Pusher pusher = new Pusher("1988f25a6056e9b32057", options);
-
-        pusher.connect(new ConnectionEventListener() {
-            @Override
-            public void onConnectionStateChange(ConnectionStateChange change) {
-                Log.i("Pusher", "State changed from " + change.getPreviousState() +
-                        " to " + change.getCurrentState());
-            }
-
-            @Override
-            public void onError(String message, String code, Exception e) {
-                Log.i("Pusher", "There was a problem connecting! " +
-                        "\ncode: " + code +
-                        "\nmessage: " + message +
-                        "\nException: " + e
-                );
-            }
-        }, ConnectionState.ALL);
-
-        Channel channel = pusher.subscribe("my-channel");
-
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(PusherEvent event) {
-                Log.i("Pusher", "Received event with data: " + event.toString());
-            }
-        });
 
     }
 
@@ -154,6 +124,7 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
+        alertDialog = new SpotsDialog.Builder().setContext(this).setTheme(R.style.CustomProgressBarDialog).build();
     }
 
 
@@ -207,24 +178,55 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
     private void setEvents() {
 
         binding.supportBtn.setOnClickListener(view -> {
-            startActivity(new Intent(this, MapViewActivity.class));
+            LocationDomain location = AppUtils.getLocation(this);
+            String url = "https://www.google.com/maps/place/97+Đ.+Man+Thiện,+Hiệp+Phú,+Quận+9,+Thành+phố+Hồ+Chí+Minh,+Vietnam/@10.8466863,106.7775641,16z/data=!4m5!3m4!1s0x317527131ae8b249:0x4d2d3c8fab7d3c2e!8m2!3d10.8473787!4d106.7857602";
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+            startActivity(intent);
+//            String url = "http://maps.google.com/maps?saddr=10.848082,106.786687&daddr=10.848354,106.774406&mode=driving";
+//            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+//            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+//            startActivity(intent);
+//            startActivity(new Intent(HomeActivity.this, DirectionActivity.class));
+//            startActivity(new Intent(this, MapViewActivity.class));
+//            double latitude1 = 10.390991;
+//            double longitude1 = -254.268241;
+//            double latitude2 = 10.395641;
+//            double longitude2 = -254.273787;
+//
+//            float[] distance = new float[2];
+//            Location.distanceBetween(latitude1, longitude1, latitude2, longitude2, distance);
+//            System.out.println("distance:" + distance[0]/1000);
+//            locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                return;
+//            }
+//            alertDialog.show();
+//            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mLocationListener);
         });
 
 
         binding.imageUserHomeScreen.setOnClickListener(view -> {
             startActivity(new Intent(this, ProfileActivity.class));
+            overridePendingTransition(0, 0);
         });
 
         binding.settingBtn.setOnClickListener(view -> {
             startActivity(new Intent(this, ProfileActivity.class));
+            overridePendingTransition(0, 0);
         });
 
         binding.cartBtn.setOnClickListener(view -> {
             startActivity(new Intent(this, CartListActivity.class));
+            overridePendingTransition(0, 0);
 
         });
         binding.orderedBtn.setOnClickListener(view -> {
             startActivity(new Intent(this, OrderedListActivity.class));
+            overridePendingTransition(0, 0);
+
         });
 
         binding.editTextSearchHomeScreen.setOnClickListener(new View.OnClickListener() {
@@ -276,12 +278,13 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
         rvPopular = binding.recyclerViewPopularHomeScreen;
         rvDiscount = binding.recyclerViewDiscountHomeScreen;
         txtName = binding.txtNameUserHomeScreen;
+        txtWelcome = binding.textViewWelcomeLabel;
         imgAvt = binding.imageUserHomeScreen;
         slideDiscount = binding.slideDiscountHomeScreen;
         countClickSearch = 0;
         countUpdateAddress = 1;
 //        mapViewModel.callGetPlaceFromGeocode(this.location, "vi-VN", getString(R.string.apikey_here_dot_com));
-        getMyLocation();
+//        getMyLocation();
 
 
         // load information user
@@ -294,12 +297,7 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
 //        });
         loadInfoUser(AppUtils.getAccount2(this));
 
-        mapViewModel.getTitlePlace().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.textViewLocation.setText(s.split(",")[0] + "");
-            }
-        });
+
 
         mapViewModel.getClickLocation().observe(this,
                 new Observer<Boolean>() {
@@ -342,43 +340,44 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
 
     }
 
-    private void getMyLocation() {
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            Toast.makeText(this, "Location not accept", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 500, this);
-    }
+//    private void getMyLocation() {
+//        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+////            Toast.makeText(this, "Location not accept", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 500, this);
+//    }
 
-    @Override
-    public void onLocationChanged(Location location) {
-        mapViewModel.callGetPlaceFromGeocode(location.getLatitude() + "," + location.getLongitude(), "vi-VN", getString(R.string.apikey_here_dot_com));
-    }
-
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        Log.d("Latitude", "disable");
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        Log.d("Latitude", "enable");
-    }
+//    @Override
+//    public void onLocationChanged(Location location) {
+//        mapViewModel.callGetPlaceFromGeocode(location.getLatitude() + "," + location.getLongitude(), "vi-VN", getString(R.string.apikey_here_dot_com));
+//    }
 
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.d("Latitude", "status");
-    }
+//    @Override
+//    public void onProviderDisabled(String provider) {
+//        Log.d("Latitude", "disable");
+//    }
+//
+//    @Override
+//    public void onProviderEnabled(String provider) {
+//        Log.d("Latitude", "enable");
+//    }
+//
+//
+//    @Override
+//    public void onStatusChanged(String provider, int status, Bundle extras) {
+//        Log.d("Latitude", "status");
+//    }
 
 
     private void loadInfoUser(User user) {
         if (!user.getUsername().equals("") && user.getUsername() != null) {
             txtName.setText("Hi " + user.getUsername());
+            txtWelcome.setText(getString(R.string.welcome) +", " + user.getName());
         }
 
 
@@ -446,4 +445,12 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
         if (user != null && user.getImageUser() != null)
             Glide.with(this).load(user.getImageUser().getLink()).into(binding.imageUserHomeScreen);
     }
+
+//    private final LocationListener mLocationListener = location -> {
+//        String url = "http://maps.google.com/maps?saddr="+location.getLatitude()+","+location.getLongitude()+"&daddr=10.848354,106.774406&mode=driving";
+//        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+//        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+//        alertDialog.dismiss();
+//        startActivity(intent);
+//    };
 }

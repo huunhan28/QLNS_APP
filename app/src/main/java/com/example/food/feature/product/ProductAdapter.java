@@ -138,12 +138,15 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
 
         @Override
         public boolean areContentsTheSame(@NonNull Product oldItem, @NonNull Product newItem) {
-            return oldItem.getName().equals(newItem.getName())&&
-                    oldItem.getDescription().equals(newItem.getDescription()) &&
-                    Double.compare(oldItem.getDiscount(), newItem.getDiscount())==0 &&
-                    oldItem.getId()== newItem.getId()&&
-                    oldItem.getCalculationUnit().equals(newItem.getCalculationUnit())&&
-                    oldItem.getImages().equals(newItem.getImages());
+            return
+//                    oldItem.getName().equals(newItem.getName())&&
+//                    oldItem.getDescription().equals(newItem.getDescription()) &&
+//                    Double.compare(oldItem.getDiscount(), newItem.getDiscount())==0 &&
+                    oldItem.getId()== newItem.getId()
+//                    &&
+//                    oldItem.getCalculationUnit().equals(newItem.getCalculationUnit())&&
+//                    oldItem.getImages().equals(newItem.getImages())
+                    ;
         }
     }
 }

@@ -40,4 +40,7 @@
     <color name="blue_4">#428CD4</color>
     <color name="pink_1">#FF9CDA</color>
     <color name="pink_2">#EA4492</color>
+
+    <color name="primary">#0AC4BA</color>
+    <color name="secondary">#2BDA8E</color>
 </resources>

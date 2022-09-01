@@ -152,30 +152,6 @@
                         </com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_email_edit_profile"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:hint="Email"
-                        android:textColorHint="@color/black"
-                        app:boxCornerRadiusBottomEnd="@dimen/edit_text_radius"
-                        app:boxCornerRadiusBottomStart="@dimen/edit_text_radius"
-                        app:boxCornerRadiusTopEnd="@dimen/edit_text_radius"
-                        app:boxCornerRadiusTopStart="@dimen/edit_text_radius"
-                        app:boxStrokeWidth="1dp"
-                        app:hintEnabled="true"
-                        app:startIconCheckable="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edit_text_email_edit_profile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress">
-
-                        </com.google.android.material.textfield.TextInputEditText>
-                    </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_address_edit_profile"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"

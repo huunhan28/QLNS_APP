@@ -48,7 +48,7 @@ public class ProfileScreenFragmentAdmin extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        binding.coordinator.setVisibility(View.GONE);
         setControls();
         setEvents();
 //        loadInfoUser(AppUtils.getAccount2(requireContext()));
@@ -91,7 +91,7 @@ public class ProfileScreenFragmentAdmin extends Fragment {
         txtName = binding.txtNameProfileScreen;
         txtUsername = binding.txtUserNameProfileScreen;
         imgAvt = binding.imgAvtProfileScreen;
-        binding.btnBackProfile.setVisibility(View.GONE);
+//        binding.btnBackProfile.setVisibility(View.GONE);
 //        binding.btnEditProfileScreen.setVisibility(View.GONE);
     }
 

@@ -37,7 +37,7 @@ import okhttp3.RequestBody;
 public class EditProfileFragment extends Fragment {
 
     private String KEY_AVT = "file";
-
+    private User userTemp;
     private FragmentEditProfileScreenBinding binding;
     private String CODE = "choose_image_avt";
     private AlertDialog alertDialog;
@@ -174,7 +174,7 @@ public class EditProfileFragment extends Fragment {
 //                .load(user.getImageUser().getLink())
 //                .into(binding.imgAvtEditProfileScreen);
         binding.editTextNameEditProfile.setText(user.getName());
-        binding.editTextEmailEditProfile.setText(user.getEmail());
+        userTemp= user;
         binding.editTextAddressEditProfile.setText(user.getAddress());
     }
 
@@ -182,7 +182,7 @@ public class EditProfileFragment extends Fragment {
         if (checkInput()) {
             return new UserRequestForUpdate(
                     binding.editTextNameEditProfile.getText().toString(),
-                    binding.editTextEmailEditProfile.getText().toString(),
+                    userTemp.getEmail().toString(),
                     binding.editTextAddressEditProfile.getText().toString()
             );
         } else return null;

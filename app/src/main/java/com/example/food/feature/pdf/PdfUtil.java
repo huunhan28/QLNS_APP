@@ -66,7 +66,7 @@ public class PdfUtil {
             document.setPageSize(PageSize.A4);
             document.setMargins(50f, 5f, 5f, 10f);
             document.addCreationDate();
-            document.addAuthor("TNT_HIEN");
+            document.addAuthor("TNT_NHAN");
             document.addCreator("Hien Nguyen");
 
             document.close();
@@ -121,7 +121,7 @@ public class PdfUtil {
                     Common.getAppPath(context) + "test_pdf.pdf");
             printManager.print("Document", printDocumentAdapter, new PrintAttributes.Builder().build());
         } catch (Exception e) {
-            Log.d("TNT_HIEN:", "" + e.getMessage());
+            Log.d("TNT_NHAN:", "" + e.getMessage());
         }
     }
 

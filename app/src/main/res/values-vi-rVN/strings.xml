@@ -10,4 +10,6 @@
     <string name="yourlocation">Vị trí của bạn</string>
     <string name="listorder">Danh sách đơn hàng</string>
     <string name="changelanguage">Đổi ngôn ngữ</string>
+    <string name="welcome">Xin chào</string>
+    <string name="manager">Quản lý</string>
 </resources>

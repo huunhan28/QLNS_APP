@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.food.Adapter.OrderListAdapter;
 import com.example.food.Api.Api;
+import com.example.food.Domain.LocationDomain;
 import com.example.food.Domain.Order;
 import com.example.food.network.Listener.OrdersResponseListener;
 import com.example.food.R;
@@ -19,6 +20,8 @@ import com.example.food.viewmodel.OrderViewModel;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,12 +53,39 @@ public class OrderedListActivity extends AppCompatActivity implements OrderListA
         alertDialog = new SpotsDialog.Builder().setContext(this).setTheme(R.style.CustomProgressBarDialog).build();
         alertDialog.show();
         api.getOrdersByUser(ordersResponseListener,user.getId());
-        binding.btnBackListOrdered.setOnClickListener(view -> navigationToHome(view));
+
+        setEvents();
     }
 
-    private void navigationToHome(View view) {
-        finish();
+    private void setEvents() {
+//        binding.btnBackListOrdered.setOnClickListener(view -> navigationToHome(view));
+
+        binding.homeBtn.setOnClickListener(view -> {
+            startActivity(new Intent(this, HomeActivity.class));
+            overridePendingTransition(0, 0);
+        });
+
+        binding.cartBtn.setOnClickListener(view -> {
+            startActivity(new Intent(this, CartListActivity.class));
+            overridePendingTransition(0, 0);
+
+        });
+
+        binding.supportBtn.setOnClickListener(view -> {
+            LocationDomain location = AppUtils.getLocation(this);
+            String url = "https://www.google.com/maps/place/97+Đ.+Man+Thiện,+Hiệp+Phú,+Quận+9,+Thành+phố+Hồ+Chí+Minh,+Vietnam/@10.8466863,106.7775641,16z/data=!4m5!3m4!1s0x317527131ae8b249:0x4d2d3c8fab7d3c2e!8m2!3d10.8473787!4d106.7857602";
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+            startActivity(intent);
+        });
+
+        binding.settingBtn.setOnClickListener(view -> {
+            startActivity(new Intent(this, ProfileActivity.class));
+            overridePendingTransition(0, 0);
+        });
     }
+
+
 
     private  final OrdersResponseListener ordersResponseListener =new OrdersResponseListener() {
         @Override
@@ -106,11 +136,11 @@ public class OrderedListActivity extends AppCompatActivity implements OrderListA
                     .subscribe(success -> {
                         if(success.isSuccessful() && success.body().getStatus().equalsIgnoreCase("Ok")){
                             adapter.changeItem(success.body().getData());
-                            Log.d("HIEN", "insert comment for order success");
+                            Log.d("NHAN", "insert comment for order success");
                         }else {
-                            Log.d("HIEN", "insert comment for order failed" + success.body().getMessage());
+                            Log.d("NHAN", "insert comment for order failed" + success.body().getMessage());
                         }
-                    }, error ->  Log.d("HIEN", "insert comment for order failed" +error.getLocalizedMessage()));
+                    }, error ->  Log.d("NHAN", "insert comment for order failed" +error.getLocalizedMessage()));
         }
     }
 
@@ -123,7 +153,7 @@ public class OrderedListActivity extends AppCompatActivity implements OrderListA
                     if(responseObjectResponse.code()==200){
                         adapter.changeItem(responseObjectResponse.body().getData());
                     }else{
-                        Log.d("HIEN", "call update state order failed " + responseObjectResponse.errorBody().string());
+                        Log.d("NHAN", "call update state order failed " + responseObjectResponse.errorBody().string());
                     }
                 });
     }

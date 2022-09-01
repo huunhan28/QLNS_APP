@@ -49,22 +49,23 @@ public class SignupActivity extends AppCompatActivity {
     @SuppressLint("CheckResult")
     private void signupProcess(){
         String username = binding.editTextUsernameSignUp.getText().toString() +"";
+        String phone = binding.editTextPhoneSignUp.getText().toString() +"";
         String name = binding.editTextNameSignUp.getText().toString() +"";
+        String address = binding.editTextAddressSignUp.getText().toString();
         String password = binding.editTextPasswordSignUp.getText().toString() +"";
         String confirmPass = binding.editTextConfirmPasswordSignUp.getText().toString() +"";
+
 
         if(username.equals("")){
             binding.errorPhoneRegister.setError("Không được để trống");
             binding.editTextUsernameSignUp.requestFocus();
             return;
-        }else{
-            if(!username.matches("0[0-9]{9}")){
-                binding.errorPhoneRegister.setError("Không đúng định dạng");
-                binding.editTextUsernameSignUp.requestFocus();
-                return;
-            }else{
-                binding.errorPhoneRegister.setErrorEnabled(false);
-            }
+        }
+
+        if(phone.equals("")){
+            binding.errorPhone1Register.setError("Không được để trống");
+            binding.editTextUsernameSignUp.requestFocus();
+            return;
         }
 
         if(name.equals("")){
@@ -73,6 +74,15 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }else{
             binding.errorNameRegister.setErrorEnabled(false);
+
+        }
+
+        if(address.equals("")){
+            binding.errorAddressRegister.setError("Không được để trống");
+            binding.editTextAddressSignUp.requestFocus();
+            return;
+        }else{
+            binding.errorAddressRegister.setErrorEnabled(false);
 
         }
 
@@ -103,7 +113,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         }
         if(password.equals(confirmPass)) {
-            userViewModel.makeApiCallSignUp(username, name, password).subscribe(
+            userViewModel.makeApiCallSignUp(username,phone, name, password, address).subscribe(
                     userDTO -> {
                         userDTOtemp = userDTO.body();
                         if (userDTO.isSuccessful() && userDTOtemp.getStatus().equalsIgnoreCase("Ok")) {

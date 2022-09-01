@@ -73,10 +73,11 @@ public class HomeScreenFragment extends Fragment implements DiscountAdapter.Clic
     private RecyclerView rvCate, rvPopular, rvDiscount;
     private SliderView slideDiscount;
     private User user;
-    private TextView txtName;
+    private TextView txtName,txtWelcome;
     private CircleImageView imgAvt;
     private UserViewModel userViewModel;
     private MapViewModel mapViewModel;
+
     String location = "10.84898,106.78736";
     int countUpdateAddress=1;
     List<Product> products;
@@ -100,6 +101,7 @@ public class HomeScreenFragment extends Fragment implements DiscountAdapter.Clic
         return binding.getRoot();
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -117,6 +119,8 @@ public class HomeScreenFragment extends Fragment implements DiscountAdapter.Clic
         loadCategories();
         loadProducts();
         setEvents();
+
+
     }
 
     @SuppressLint("CheckResult")
@@ -240,6 +244,7 @@ public class HomeScreenFragment extends Fragment implements DiscountAdapter.Clic
         rvPopular = binding.recyclerViewPopularHomeScreen;
         rvDiscount = binding.recyclerViewDiscountHomeScreen;
         txtName = binding.txtNameUserHomeScreen;
+        txtWelcome= binding.textViewWelcomeLabel;
         imgAvt = binding.imageUserHomeScreen;
         slideDiscount = binding.slideDiscountHomeScreen;
         countClickSearch=0;
@@ -257,12 +262,7 @@ public class HomeScreenFragment extends Fragment implements DiscountAdapter.Clic
             }
         });
 
-        mapViewModel.getTitlePlace().observe(requireActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.textViewLocation.setText(s.split(",")[0]+"");
-            }
-        });
+
 
         mapViewModel.getClickLocation().observe(requireActivity(),
                 new Observer<Boolean>() {
@@ -350,6 +350,7 @@ public class HomeScreenFragment extends Fragment implements DiscountAdapter.Clic
     private void loadInfoUser(User user) {
         if(!user.getUsername().equals("") && user.getUsername()!=null){
             txtName.setText("Hi " + user.getUsername());
+
         }
 
 

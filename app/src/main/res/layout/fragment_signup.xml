@@ -87,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:hint="Số điện thoại"
+                        android:hint="Email"
                         android:textColorHint="@color/black"
                         app:boxCornerRadiusBottomEnd="@dimen/edit_text_radius"
                         app:boxCornerRadiusBottomStart="@dimen/edit_text_radius"
@@ -99,6 +99,31 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_username_sign_up"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/error_phone1_register"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:hint="Số điện thoại"
+                        android:textColorHint="@color/black"
+                        app:boxCornerRadiusBottomEnd="@dimen/edit_text_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/edit_text_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/edit_text_radius"
+                        app:boxCornerRadiusTopStart="@dimen/edit_text_radius"
+                        app:boxStrokeWidth="1dp"
+                        app:hintEnabled="true"
+                        app:startIconCheckable="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_phone_sign_up"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text">
@@ -124,6 +149,32 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edit_text_name_sign_up"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/error_address_register"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Địa chỉ"
+                        android:textColorHint="@color/black"
+                        app:boxCornerRadiusBottomEnd="@dimen/edit_text_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/edit_text_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/edit_text_radius"
+                        app:boxCornerRadiusTopStart="@dimen/edit_text_radius"
+                        app:boxStrokeWidth="1dp"
+                        app:hintEnabled="true"
+                        app:startIconCheckable="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_address_sign_up"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text">

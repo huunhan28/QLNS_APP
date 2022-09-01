@@ -86,7 +86,7 @@ public class MapViewModel extends AndroidViewModel {
                         }
                     }else {
                         distance.postValue(0.0);
-                        Log.d("HIEN", response.errorBody().string());
+                        Log.d("Nhan", response.errorBody().string());
                     }
                 }, throwable -> message.setValue(AppUtils.getErrorMessage(throwable.getMessage())));
     }

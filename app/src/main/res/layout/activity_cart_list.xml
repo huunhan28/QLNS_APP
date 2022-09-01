@@ -37,21 +37,26 @@
         </TextView>
     </RelativeLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/scroll_view_info_invoice"
-        android:layout_below="@+id/relative_your_cart">
+        android:layout_below="@+id/relative_your_cart"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:overScrollMode="never">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 
     <ScrollView
         android:id="@+id/scroll_view_info_invoice"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_above="@+id/linear_layout_checkout_order">
+        android:layout_above="@+id/linear_layout_checkout_order"
+        android:overScrollMode="never">
+
         <LinearLayout
             android:id="@+id/linear_layout_bottom_your_cart"
             android:layout_width="match_parent"
@@ -231,7 +236,7 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Tổng cộng:"
@@ -243,7 +248,7 @@
             android:id="@+id/text_view_total_order_carts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="055655645"
             android:textColor="#373b54"
             android:textSize="24sp"
             android:textStyle="bold" />

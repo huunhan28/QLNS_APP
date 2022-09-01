@@ -329,8 +329,8 @@ public class AdminOrderFragment extends Fragment implements AdminOrderAdapter.Cl
             document.setPageSize(PageSize.A4);
             document.setMargins(5f, 5f, 5f, 5f);
             document.addCreationDate();
-            document.addAuthor("TNT_HIEN");
-            document.addCreator("Hien Nguyen");
+            document.addAuthor("NHAN");
+            document.addCreator("Nhan Nguyen");
 
             Paragraph paragraph = new Paragraph("");
             pdf.addNewItem(document, "LIST OF ORDER", Element.ALIGN_CENTER, pdf.titleFont);

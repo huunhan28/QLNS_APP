@@ -51,20 +51,20 @@ public class MyService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("HIEN", "My service onBind");
+        Log.d("NHAN", "My service onBind");
         return null;
     }
 
     @Override
     public void onCreate() {
-        Log.d("HIEN", "My service onCreate");
+        Log.d("NHAN", "My service onCreate");
         super.onCreate();
     }
 
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("HIEN", "My service onStartCommand");
+        Log.d("NHAN", "My service onStartCommand");
         setUpPusher();
         sendNotification1("run service", "test");
 
@@ -73,13 +73,13 @@ public class MyService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d("HIEN", "My service onUnbind");
+        Log.d("NHAN", "My service onUnbind");
         return super.onUnbind(intent);
     }
 
     @Override
     public void onDestroy() {
-        Log.d("HIEN", "My service onDestroy");
+        Log.d("NHAN", "My service onDestroy");
         super.onDestroy();
     }
 

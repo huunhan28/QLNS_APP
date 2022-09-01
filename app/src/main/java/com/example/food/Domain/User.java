@@ -37,6 +37,7 @@ public class User implements Serializable {
     private String rememberToken;
     private Date createdAt;
 
+    private String phone;
 
     private Date updatedAt;
 
@@ -61,7 +62,7 @@ public class User implements Serializable {
             , String email,String address
             , String rememberToken, Date createdAt, Date updatedAt
             , String username, String password, Set<Role> roles,
-                Image image, String tokenFireBase) {
+                Image image, String tokenFireBase, String phone) {
         this.token = token;
         this.type = type;
         this.id = id;
@@ -76,6 +77,7 @@ public class User implements Serializable {
         this.roles = roles;
         this.imageUser = image;
         this.tokenFireBase = tokenFireBase;
+        this.phone = phone;
     }
 
     public User(String username, String password) {
@@ -198,6 +200,10 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public  String getPhone() { return phone; }
+
+    public void setPhone(String phone) { this.phone = phone; }
 
     public Set<Role> getRoles() {
         return roles;

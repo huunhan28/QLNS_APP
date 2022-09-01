@@ -60,10 +60,10 @@ public class ProfileScreenFragment extends Fragment {
     }
 
     private void setEvents() {
-        binding.btnBackProfile.setOnClickListener(view -> {
-            NavDirections action = ProfileScreenFragmentDirections.actionProfileScreenFragmentToHomeScreenFragment();
-            Navigation.findNavController(view).navigate(action);
-        });
+//        binding.btnBackProfile.setOnClickListener(view -> {
+//            NavDirections action = ProfileScreenFragmentDirections.actionProfileScreenFragmentToHomeScreenFragment();
+//            Navigation.findNavController(view).navigate(action);
+//        });
 
         binding.btnEditProfileScreen.setOnClickListener(view -> {
             NavDirections action = ProfileScreenFragmentDirections.actionProfileScreenFragmentToEditProfileFragment();

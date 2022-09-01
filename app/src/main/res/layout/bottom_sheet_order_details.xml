@@ -51,6 +51,26 @@
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <TextView
+        style="@style/TextViewH1"
+        android:id="@+id/textView99"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Số điện thoại"
+        app:layout_constraintStart_toStartOf="@+id/text_view_product_name_of_order"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_product_name_of_order" />
+
+    <TextView
+        style="@style/TextViewH2"
+        android:id="@+id/text_view_phone_of_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0548315852"
+        app:layout_constraintStart_toStartOf="@+id/textView99"
+        app:layout_constraintTop_toBottomOf="@+id/textView99" />
+
         <TextView
             style="@style/TextViewH1"
             android:id="@+id/textView22"
@@ -58,18 +78,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Địa chỉ giao hàng"
-            app:layout_constraintStart_toStartOf="@+id/text_view_product_name_of_order"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_product_name_of_order" />
+            app:layout_constraintStart_toStartOf="@+id/text_view_phone_of_order"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_phone_of_order" />
 
-        <TextView
-            style="@style/TextViewH2"
-            android:id="@+id/text_view_address_of_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="97 Man Thiện"
-            app:layout_constraintStart_toStartOf="@+id/textView22"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+    <TextView
+        android:id="@+id/text_view_address_of_order"
+        style="@style/TextViewH2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:text="97 Man Thiện"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout_comment_of_order_details"
@@ -106,11 +128,12 @@
         <TextView
             android:id="@+id/textView24"
             style="@style/TextViewH2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Bạn có lời nào dành cho sản phẩm này không?"
             android:textAlignment="viewStart"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rating_bar_of_order" />
 

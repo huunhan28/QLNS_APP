@@ -27,7 +27,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
     private static final String KEY_ORDER_DETAILS = "order_details";
     private static ClickButton mClickButton;
     private Order mOrder;
-    private TextView txtTotal, txtProductName, txtDeliveryAddress, txtOrderId, txtComment;
+    private TextView txtTotal, txtProductName, txtDeliveryAddress,txtDeliveryPhone, txtOrderId, txtComment;
     private RatingBar rating;
     private ConstraintLayout layoutCommentOfOrder;
     private Button btnCancel, btnAccept;
@@ -102,6 +102,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         txtTotal = view.findViewById(R.id.text_view_total_order);
         txtProductName = view.findViewById(R.id.text_view_product_name_of_order);
         txtDeliveryAddress = view.findViewById(R.id.text_view_address_of_order);
+        txtDeliveryPhone = view.findViewById(R.id.text_view_phone_of_order);
         txtOrderId = view.findViewById(R.id.text_view_order_details_id);
         btnCancel = view.findViewById(R.id.button_cancel_order_details);
         btnAccept = view.findViewById(R.id.button_accept_order_details);
@@ -158,6 +159,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
         txtTotal.setText(AppUtils.formatCurrency(mOrder.getTotalPriceOfProducts()));
         txtProductName.setText(mOrder.getProductsName());
         txtDeliveryAddress.setText(mOrder.getUser().getAddress() + "");
+        txtDeliveryPhone.setText(mOrder.getUser().getPhone() + "");
 
         if(mOrder.isCommented()){
             orderViewModel.callGetCommentOfOrder(mOrder.getId())
@@ -167,7 +169,7 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
                             rating.setRating(comment.getRating());
                             txtComment.setText(comment.getComment());
                         }
-                    }, error ->  Log.d("HIEN", "get comment of order failed" + error.getMessage()));
+                    }, error ->  Log.d("NHAN", "get comment of order failed" + error.getMessage()));
         }
     }
 

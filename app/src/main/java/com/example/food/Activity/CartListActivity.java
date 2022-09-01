@@ -38,6 +38,7 @@ import com.example.food.Adapter.CardListAdapter;
 import com.example.food.Api.Api;
 import com.example.food.Domain.AddressShop;
 import com.example.food.Domain.Cart;
+import com.example.food.Domain.LocationDomain;
 import com.example.food.Domain.Product;
 import com.example.food.Domain.Response.DiscountResponse;
 import com.example.food.Domain.Response.OrderDetailResponse;
@@ -114,44 +115,44 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         getMyLocation();
         loadData();
         setEvent();
-        setUpPusher();
+//        setUpPusher();
 
 
     }
 
-    private void setUpPusher() {
-        PusherOptions options = new PusherOptions();
-        options.setCluster("ap1");
-
-        Pusher pusher = new Pusher("1988f25a6056e9b32057", options);
-
-        pusher.connect(new ConnectionEventListener() {
-            @Override
-            public void onConnectionStateChange(ConnectionStateChange change) {
-                Log.i("Pusher", "State changed from " + change.getPreviousState() +
-                        " to " + change.getCurrentState());
-            }
-
-            @Override
-            public void onError(String message, String code, Exception e) {
-                Log.i("Pusher", "There was a problem connecting! " +
-                        "\ncode: " + code +
-                        "\nmessage: " + message +
-                        "\nException: " + e
-                );
-            }
-        }, ConnectionState.ALL);
-
-        Channel channel = pusher.subscribe("my-channel");
-
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(PusherEvent event) {
-                Log.i("Pusher", "Received event with data: " + event.toString());
-            }
-        });
-
-    }
+//    private void setUpPusher() {
+//        PusherOptions options = new PusherOptions();
+//        options.setCluster("ap1");
+//
+//        Pusher pusher = new Pusher("1988f25a6056e9b32057", options);
+//
+//        pusher.connect(new ConnectionEventListener() {
+//            @Override
+//            public void onConnectionStateChange(ConnectionStateChange change) {
+//                Log.i("Pusher", "State changed from " + change.getPreviousState() +
+//                        " to " + change.getCurrentState());
+//            }
+//
+//            @Override
+//            public void onError(String message, String code, Exception e) {
+//                Log.i("Pusher", "There was a problem connecting! " +
+//                        "\ncode: " + code +
+//                        "\nmessage: " + message +
+//                        "\nException: " + e
+//                );
+//            }
+//        }, ConnectionState.ALL);
+//
+//        Channel channel = pusher.subscribe("my-channel");
+//
+//        channel.bind("my-event", new SubscriptionEventListener() {
+//            @Override
+//            public void onEvent(PusherEvent event) {
+//                Log.i("Pusher", "Received event with data: " + event.toString());
+//            }
+//        });
+//
+//    }
 
     @SuppressLint("CheckResult")
     private void loadData() {
@@ -163,13 +164,27 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
                         lon1 = addressShop.getLongitude();
                         lat1 = addressShop.getLatitude();
                         if(lat2!=0 && lon2!=0){
-                            Log.d("HIEN", "LOCATION:" + lon1 + "," + lat1 + "-" + lon2 + "," + lat2);
+                            Log.d("NHAN", "LOCATION:" + lon1 + "," + lat1 + "-" + lon2 + "," + lat2);
 
                             mapViewModel.callGetDistanceFromTwoPlace(lon1, lat1, lon2, lat2,getString(R.string.mapbox_access_token));
                         }
 
                     }
                 });
+//            double latitude1 = 10.390991;
+//            double longitude1 = -254.268241;
+//            double latitude2 = 10.395641;
+//            double longitude2 = -254.273787;
+//
+//            float[] distance = new float[2];
+//            Location.distanceBetween(latitude1, longitude1, latitude2, longitude2, distance);
+        LocationDomain locationDomain = AppUtils.getLocation(this);
+        LocationDomain locationDomainShop = AppUtils.getLocationShop(this);
+        float[] distance = new float[2];
+            Location.distanceBetween(10.84778505, 106.78470671,
+                    10.848354, 106.774406, distance);
+            int feeTemp = (int) (distance[0] / 1000 * feeDeliveryPerKm);
+        DeliveryFeeTxt.setText(feeTemp+"");
     }
 
     private void getMyLocation() {
@@ -188,7 +203,7 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
             @Override
             public void onChanged(Double aDouble) {
 
-                Log.d("HIEN", "DISTANCE:" + aDouble);
+                Log.d("NHAN", "DISTANCE:" + aDouble);
                 float feeDelivery = (int)(aDouble/1000) * feeDeliveryPerKm;
                 txtDeliveryInfo.setText("Phí vận chuyển: " + feeDelivery/1000 + " km");
                 DeliveryFeeTxt.setText(AppUtils.formatCurrency(feeDelivery));
@@ -304,7 +319,7 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         alertDialog = new SpotsDialog.Builder().setContext(this).setTheme(R.style.CustomProgressBarDialog).build();
 
         txtTotalItemTemp = findViewById(R.id.text_view_total_item_temp);
-        txtDeliveryItemTemp = findViewById(R.id.text_view_delivery_item_temp);
+        txtDeliveryItemTemp = findViewById(R.id.DeliveryFeeTxt);
         btnBack = findViewById(R.id.backBtn_your_cart);
         btn_add_discount = findViewById(R.id.btn_add_discount);
         edit_discount = findViewById(R.id.edit_discount);
@@ -479,7 +494,7 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         lat2 = location.getLatitude();
         lon2 = location.getLongitude();
         if(lat1!=0 && lon1!=0) {
-            Log.d("HIEN", "LOCATION:" + lon1 + "," + lat1 + "-" + lon2 + "," + lat2);
+            Log.d("NHAN", "LOCATION:" + lon1 + "," + lat1 + "-" + lon2 + "," + lat2);
             mapViewModel.callGetDistanceFromTwoPlace(lon1, lat1, lon2, lat2, getString(R.string.mapbox_access_token));
         }
     }
