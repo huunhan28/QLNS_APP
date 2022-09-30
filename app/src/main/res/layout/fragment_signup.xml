@@ -82,7 +82,7 @@
                     android:paddingEnd="40dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/error_phone_register"
+                        android:id="@+id/error_username_register"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/error_phone1_register"
+                        android:id="@+id/error_phone_register"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                             android:id="@+id/edit_text_phone_sign_up"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text">
+                            android:inputType="number">
 
                         </com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>

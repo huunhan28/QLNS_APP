@@ -146,7 +146,7 @@ public class UserViewModel extends AndroidViewModel {
                     }else{
 //                        JSONObject jsonObject = new JSONObject(responseObjectResponse.errorBody().string());
 //                        message.setValue(jsonObject.getString("message"));
-                        message.setValue(responseObjectResponse.body().getMessage());
+                        message.setValue("Mật khẩu không đúng");
                     }
                 },throwable -> message.setValue(throwable.getMessage()));
     }

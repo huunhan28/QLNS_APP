@@ -68,7 +68,7 @@ public class SignupFragment extends Fragment {
         }
 
         if(phone.equals("")){
-            binding.errorPhone1Register.setError("Không được để trống");
+            binding.errorPhoneRegister.setError("Không được để trống");
             binding.editTextUsernameSignUp.requestFocus();
             return;
         }else{

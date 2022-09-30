@@ -41,8 +41,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     private void setEvents() {
         binding.btnConfirm.setOnClickListener(view -> {
-            String sdt = binding.editTextPhone.getText().toString();
-            checkSDT(sdt);
+            String email = binding.editTextPhone.getText().toString();
+            if(!email.matches("^(.+)@(\\S+)$")){
+                binding.textInputLayoutPhone.setError("Email không đúng định dạng");
+                return;
+            }
+            checkSDT(email);
+            return;
         });
         title = getIntent().getStringExtra("title");
         if (title != "Quên mật khẩu") {
@@ -58,12 +63,12 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         userViewModel.getExistUser().observe(this, aBoolean -> {
             boolean check = false;
             String phoneNumber = binding.editTextPhone.getText().toString();
-            if (title == null) {
+            if (title.equals("Quên mật khẩu")) {
                 if (aBoolean) {
                     check = true;
                     binding.textInputLayoutPhone.setErrorEnabled(false);
                 } else {
-                    binding.textInputLayoutPhone.setError("Số điện thoại chưa đăng ký tài khoản");
+                    binding.textInputLayoutPhone.setError("Email chưa đăng ký tài khoản");
                 }
             } else {
                 if (aBoolean) {

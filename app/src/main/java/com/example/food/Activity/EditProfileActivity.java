@@ -2,6 +2,7 @@ package com.example.food.Activity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -98,20 +99,17 @@ public class EditProfileActivity extends AppCompatActivity {
             userViewModel.apiUpdateUserNotImage(id, requestBodyUser)
                     .subscribe(userResponse -> {
                         if(userResponse.code()==200){
-                            System.out.println("Upload file success");
-                            userLocal = userResponse.body().getData();
-                            if(userLocal!=null){
-                                AppUtils.saveAccount2(this, userLocal);
-                                finish();
-                            }
-
 
                         }else{
-                            Toast.makeText(this,
-                                    AppUtils.getErrorMessage(userResponse.errorBody().string()),
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(this,
+//                                    AppUtils.getErrorMessage(userResponse.errorBody().string()),
+//                                    Toast.LENGTH_SHORT).show();
                         }
+
                         alertDialog.dismiss();
+                        AppUtils.saveAccount2(this, userResponse.body().getData());
+                        finish();
+
                     }, throwable -> {
                         Toast.makeText(this,
                                 throwable.getLocalizedMessage(),
@@ -125,29 +123,22 @@ public class EditProfileActivity extends AppCompatActivity {
             userViewModel.apiUpdateUser(id, requestBodyUser, multipartAvt)
                     .subscribe(userResponse -> {
                         if(userResponse.code()==200){
-                            System.out.println("Upload file success");
-                            userLocal = userResponse.body().getData();
-                            System.out.println("user" + userLocal.toString());
-                            if(userLocal!=null)
-                            {
-                                System.out.println("image:" + userLocal.getImageUser().getLink());
-                                AppUtils.saveAccount2(this, userLocal);
-                                finish();
-                            }
 
                         }else{
-                            Toast.makeText(this,
-                                    AppUtils.getErrorMessage(userResponse.errorBody().string()),
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(requireContext(),
+//                                    AppUtils.getErrorMessage(userResponse.errorBody().string()),
+//                                    Toast.LENGTH_SHORT).show();
                         }
+
                         alertDialog.dismiss();
+                        AppUtils.saveAccount2(this, userResponse.body().getData());
+                        finish();
                     }, throwable -> {
-//                        Toast.makeText(this,
+//                        Toast.makeText(requireContext(),
 //                                throwable.getLocalizedMessage(),
 //                                Toast.LENGTH_SHORT).show();
                     });
         }
-
 
 
 
@@ -190,17 +181,14 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private UserRequestForUpdate getUserRequestForUpdateFromView() {
-        if (checkInput()) {
-            return new UserRequestForUpdate(
-                    binding.editTextNameEditProfile.getText().toString(),
-                    userLocal.getEmail().toString(),
-                    binding.editTextAddressEditProfile.getText().toString()
-            );
-        } else return null;
+
+        return new UserRequestForUpdate(
+                binding.editTextNameEditProfile.getText().toString(),
+                userLocal.getUsername().toString(),
+                binding.editTextAddressEditProfile.getText().toString()
+        );
+
 
     }
 
-    private boolean checkInput() {
-        return true;
-    }
 }

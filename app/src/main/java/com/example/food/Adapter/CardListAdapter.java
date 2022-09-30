@@ -136,6 +136,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
                 if(quantity==1) {
                     carts.remove(position);
                     notifyDataSetChanged();
+                    changNumberItemsListener.changeQuantity(false, product.getPrice()*(1-product.getDiscount()));
                     return;
                 }
                 holder.num.setText(String.valueOf(--quantity));

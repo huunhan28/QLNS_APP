@@ -76,7 +76,7 @@
                     android:drawableStart="@drawable/search"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="Find Your Food"
+                    android:hint="Tìm kiếm"
                     android:inputType="textPersonName"
                     android:paddingStart="20dp"
                     android:textSize="14sp"

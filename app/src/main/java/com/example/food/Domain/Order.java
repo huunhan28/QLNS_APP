@@ -19,6 +19,7 @@ public class Order implements Serializable {
     private List<OrderDetail> orderDetails;
     private float total=0;
     private boolean commented;
+    private String totalPrice;
 
     public Order() {
     }
@@ -29,6 +30,15 @@ public class Order implements Serializable {
         this.createAt = createAt;
         this.discount = discount;
         this.state = state;
+    }
+
+    public Order(int id, User user, Date createAt, Discount discount, String state,String totalPrice) {
+        this.id = id;
+        this.user = user;
+        this.createAt = createAt;
+        this.discount = discount;
+        this.state = state;
+        this.totalPrice = totalPrice;
     }
 
 
@@ -99,6 +109,14 @@ public class Order implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     @Override

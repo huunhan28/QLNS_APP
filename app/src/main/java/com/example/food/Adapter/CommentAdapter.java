@@ -138,10 +138,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.rating_bar_of_comment.setRating(comments.get(position).getRating());
         holder.text_view_date_of_comment.setText(AppUtils.formatDate(comments.get(position).getCreateAt(), "dd-MM-yyyy"));
 
-        String temp = comments.get(position).getId().split("-")[0];
-        temp = temp.substring(6,temp.length());
+//        String temp = comments.get(position).getId().split("-")[0];
+//        temp = temp.substring(6,temp.length());
+//
+        int userId = comments.get(position).getUserId();
+//        userId = Integer.parseInt(temp);
 
-        int userId = Integer.parseInt(temp);
         userRepository.getUserById(userId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

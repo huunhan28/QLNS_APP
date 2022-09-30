@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -34,6 +35,7 @@ import dmax.dialog.SpotsDialog;
 public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductViewHolder> {
     private HomeViewModel homeViewModel;
     private int itemLayout;
+    private User user;
     Api api;
     public ProductAdapter(HomeViewModel homeViewModel, @NonNull DiffUtil.ItemCallback<Product> diffCallback, int itemLayout) {
         super(diffCallback);
@@ -45,6 +47,7 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(itemLayout, null);
+        user = AppUtils.getAccount(parent.getContext().getSharedPreferences(AppUtils.ACCOUNT, 0));
         return new ProductViewHolder(
                 view,
                 homeViewModel);
@@ -90,18 +93,21 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             Picasso.get().load(item.getImage().getLink()).into(imgProduct);
             txtProductSale.setText("Sale " + item.getDiscount()*100 + "%");
 //            imgProduct.setImageBitmap(item.getImageBitmap());
-            btnAddProduct.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    User user = AppUtils.getAccount(itemView.getContext().getSharedPreferences(AppUtils.ACCOUNT, Context.MODE_PRIVATE));
-                    Cart cart=new Cart(user,item,1);
-                    CartDTO cartDTO=new CartDTO(cart.getUser().getId(),Integer.parseInt(cart.getProductDomain().getProductId()+""),cart.getQuantity());
-                    api = new Api(itemView.getContext());
-                    alertDialog= new SpotsDialog.Builder().setContext(itemView.getContext()).setTheme(R.style.CustomProgressBarDialog).build();
-                    alertDialog.show();
-                    api.insertCart(insertCartResponseListener,cartDTO);
-                }
-            });
+            if(user != null){
+                btnAddProduct.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        User user = AppUtils.getAccount(itemView.getContext().getSharedPreferences(AppUtils.ACCOUNT, Context.MODE_PRIVATE));
+                        Cart cart=new Cart(user,item,1);
+                        CartDTO cartDTO=new CartDTO(cart.getUser().getId(),Integer.parseInt(cart.getProductDomain().getProductId()+""),cart.getQuantity());
+                        api = new Api(itemView.getContext());
+                        alertDialog= new SpotsDialog.Builder().setContext(itemView.getContext()).setTheme(R.style.CustomProgressBarDialog).build();
+                        alertDialog.show();
+                        api.insertCart(insertCartResponseListener,cartDTO);
+                    }
+                });
+            }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -116,7 +122,12 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             @Override
             public void didFetch(CartResponse response, String message) {
                 alertDialog.dismiss();
-                AppUtils.showSuccessDialog(itemView.getContext(), "Đã thêm vào giỏ hàng");
+//                AppUtils.showSuccessDialog(itemView.getContext(), "Đã thêm vào giỏ hàng");
+                if (response.getStatus().equals("2") == true){
+                    Toast.makeText(itemView.getContext(), response.getMessage(),Toast.LENGTH_SHORT).show();
+                }else {
+                    AppUtils.showSuccessDialog(itemView.getContext(), "Đã thêm vào giỏ hàng");
+                }
 //                Toast.makeText(itemView.getContext(), "Đã thêm vào giỏ hàng"+message.toString(),Toast.LENGTH_SHORT).show();
                 Log.d("success",message.toString());
             }

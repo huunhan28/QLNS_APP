@@ -58,7 +58,7 @@ public class ShowDetailActivity extends AppCompatActivity {
     private Api api;
     private ExpandableListView descriptionExpandListView;
     private UserRepository userRepository;
-
+    private User user;
     ExpandableTextViewAdapter adapter;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
@@ -68,7 +68,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_detail);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         commentViewModel = new ViewModelProvider(this).get(CommentViewModel.class);
-
+        user = AppUtils.getAccount(getSharedPreferences(AppUtils.ACCOUNT, 0));
         api = new Api(ShowDetailActivity.this);
         initView();
         getBundle();
@@ -93,15 +93,22 @@ public class ShowDetailActivity extends AppCompatActivity {
 
 
     private void setEvent() {
+
         addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(user != null){
                 User user = AppUtils.getAccount(getSharedPreferences(AppUtils.ACCOUNT, Context.MODE_PRIVATE));
                 Cart cart=new Cart(user,product,numberOrder);
                 CartDTO cartDTO=new CartDTO(Integer.parseInt(cart.getUser().getId()+""),Integer.parseInt(cart.getProductDomain().getProductId()+""),cart.getQuantity());
                 api.insertCart(insertCartResponseListener,cartDTO);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Bạn phải đăng nhập để tiếp tục",Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
         descriptionExpandListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
@@ -130,13 +137,19 @@ public class ShowDetailActivity extends AppCompatActivity {
     private final InsertCartResponseListener insertCartResponseListener=new InsertCartResponseListener() {
         @Override
         public void didFetch(CartResponse response, String message) {
-            Toast.makeText(ShowDetailActivity.this, "Đã thêm vào giỏ hàng"+message.toString(),Toast.LENGTH_SHORT).show();
+            Log.d("insertCart",response.toString());
+            if (response.getStatus().equals("2") == true){
+                Toast.makeText(ShowDetailActivity.this, response.getMessage(),Toast.LENGTH_SHORT).show();
+            }else {
+                AppUtils.showSuccessDialog(ShowDetailActivity.this, "Đã thêm vào giỏ hàng");
+            }
+
             Log.d("success",message.toString());
         }
 
         @Override
         public void didError(String message) {
-//            Toast.makeText(ShowDetailActivity.this,"Call api error"+message.toString(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(ShowDetailActivity.this,message.toString(),Toast.LENGTH_SHORT).show();
             Log.d("zzz",message.toString());
         }
     };

@@ -280,6 +280,12 @@ public class AdminOrderFragment extends Fragment implements AdminOrderAdapter.Cl
 //        Toast.makeText(requireContext(), "Click accept button order", Toast.LENGTH_SHORT).show();
         if(state.equals(AppUtils.orderState[0])){// chưa duyệt
             orderViewModel.callUpdateStateOrder(idOrder, AppUtils.orderState[1]); // đang giao
+            return;
+        }
+
+        if(state.equals(AppUtils.orderState[1])){// chưa duyệt
+            orderViewModel.callUpdateStateOrder(idOrder, AppUtils.orderState[2]); // đang giao
+            return;
         }
 
         // send message to user
@@ -512,7 +518,7 @@ public class AdminOrderFragment extends Fragment implements AdminOrderAdapter.Cl
         paint.setTextAlign(Paint.Align.LEFT);
         canvas.drawText("Tổng tiền:", 700, offsetY + 220, paint);
         paint.setTextAlign(Paint.Align.RIGHT);
-        canvas.drawText(AppUtils.formatCurrency(t.getTotalPriceOfProducts()), pageWidth - 20, offsetY + 220, paint);
+        canvas.drawText(t.getTotalPrice()+"đ", pageWidth - 20, offsetY + 220, paint);
 
         myPdfDocument.finishPage(myPage1);
     }

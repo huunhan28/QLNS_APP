@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Voucher khuyến mãi 35% cho đơn hàng từ 50k tối đa giảm 20k cho 1 đơn hàng, mỗi tài khoản chỉ sử dụng được 1 lần"
+                    android:text="Chương trình khuyến mãi lớn, lấy vocher ngay"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/text_view_header_info_voucher"

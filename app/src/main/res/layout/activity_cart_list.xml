@@ -290,6 +290,7 @@
         android:id="@+id/btnCheckOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -299,8 +300,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"/>
+        android:textStyle="bold" />
 
 
 

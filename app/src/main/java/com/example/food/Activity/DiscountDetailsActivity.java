@@ -79,7 +79,7 @@ public class DiscountDetailsActivity extends AppCompatActivity {
         int percent = (int)(discount.getPercent()*100);
         binding.textViewVoucherName.setText(discount.getId() +" | " +percent + "%");
         binding.textViewEndDateVoucher.setText(AppUtils.formatDate(discount.getEndDate(), "dd-MM-yyyy"));
-        binding.textViewDescriptionInfoVoucher.setText("Voucher khuyến mãi "+percent+"% cho đơn hàng từ 50k tối đa giảm 20k cho 1 đơn hàng. Số lượng có hạn. Mại dô mại dô");
+        binding.textViewDescriptionInfoVoucher.setText("Voucher khuyến mãi "+percent+"% cho tất cả đơn hàng. Số lượng có hạn. Mại dô mại dô");
 
         Glide.with(this)
                 .load(discount.getImageDiscount().getLink())

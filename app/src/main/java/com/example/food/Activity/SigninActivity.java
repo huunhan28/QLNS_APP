@@ -13,6 +13,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class SigninActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = FragmentSigninBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         initData();
         setEvents();
 
@@ -66,6 +67,9 @@ public class SigninActivity extends AppCompatActivity {
                     binding.editTextPasswordSignIn.getText().toString());
         });
         binding.btnSignUp.setOnClickListener(view -> navigateToEnterPhoneNumber());
+        binding.btnSkip.setOnClickListener(view ->{
+            startActivity(new Intent(SigninActivity.this, HomeActivity.class));
+        });
     }
 
     private void navigateToEnterPhoneNumber() {

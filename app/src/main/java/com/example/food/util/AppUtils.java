@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
+import com.example.food.Activity.SigninActivity;
 import com.example.food.Domain.LocationDomain;
 import com.example.food.R;
 import com.example.food.Domain.User;
@@ -45,10 +47,10 @@ import java.util.concurrent.Callable;
 public class AppUtils {
 
 
-    public static String BASE_URL = "http://192.168.1.10:8080/";
+   // public static String BASE_URL = "http://192.168.88.106:8080/";
 //    public static String BASE_URL = "http://10.10.1.126:8080/";
 //        public static String BASE_URL="http://192.168.0.117:8080/";
-      //  public static String BASE_URL="http://172.25.176.1:8080/";
+        public static String BASE_URL="http://172.20.10.2:8080/";
     public static String[] ROLES = {"ROLE_USER", "ROLE_ADMIN"};
     public static int PASS_LOGIN = 0;
     public static String[] orderState = {"Chưa duyệt", "Đang giao", "Đã giao", "Đã hủy"};
@@ -353,6 +355,7 @@ public class AppUtils {
 
         dialog.show();
     }
+
 
     public static void showErrorDialog(
             Context context,

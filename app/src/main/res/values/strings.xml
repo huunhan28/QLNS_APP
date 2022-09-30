@@ -8,7 +8,7 @@
         <item> #fef4e5</item>
     </string-array>
     <string name="authorization_cloud_message" translatable="false">key=AAAADGEAvcU:APA91bHeDYkiY8nhe1lkoZcyHDNxjWPhp5tXEVl-w1wNqrpAlekus-PzWvUHEXsxwo58XcpRy0z6Z3z4VqhmHvzLBoHdLF5qDpNx5JmX0yksFBMikNwwGZrcVFQ9iBU4N1O8f3Aktc29</string>
-    <string name="mapbox_access_token" translatable="false">pk.eyJ1Ijoic2FuZzAxMCIsImEiOiJjbDJxYXprZnMwMDl3M2RxaHhhbTF4Zm44In0.0CEOCvmscPFaE79KvWPTIQ</string>
+    <string name="mapbox_access_token" translatable="false">pk.eyJ1IjoidG50aGllbiIsImEiOiJjbDd2Ymd6cTcwYTI2NDFzMmp4d2tycTFyIn0.y1WLJQYv0M0-qN-iv1qOgw</string>
     <string name="apikey_here_dot_com" translatable="false">LO44E-q6Z7Nr7s6oOTHozfjmobzRnfv_L9p-1QjTY8E</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>

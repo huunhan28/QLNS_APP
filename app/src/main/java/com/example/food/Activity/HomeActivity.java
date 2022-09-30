@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -102,14 +103,18 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentHomeSceenBinding.inflate(getLayoutInflater());
-//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(binding.getRoot());
 
 
 
         initData();
         setControls();
-        setEvents();
+        if(user != null){
+            setEvents();
+        }
+
+        setEvents2();
 
         progressBarDialog.show();
         loadDiscount();
@@ -183,6 +188,7 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
             intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
             startActivity(intent);
+
 //            String url = "http://maps.google.com/maps?saddr=10.848082,106.786687&daddr=10.848354,106.774406&mode=driving";
 //            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
 //            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
@@ -229,6 +235,10 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
 
         });
 
+
+
+    }
+    private void setEvents2() {
         binding.editTextSearchHomeScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -295,7 +305,10 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
 //                loadInfoUser(user);
 //            }
 //        });
-        loadInfoUser(AppUtils.getAccount2(this));
+        if(user != null){
+            loadInfoUser(AppUtils.getAccount2(this));
+        }
+
 
 
 

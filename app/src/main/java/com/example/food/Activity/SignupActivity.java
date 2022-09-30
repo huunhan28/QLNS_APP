@@ -30,6 +30,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initData();
         addEvents();
+        binding.editTextPhoneSignUp.requestFocus();
     }
 
   
@@ -44,6 +45,8 @@ public class SignupActivity extends AppCompatActivity {
         String phoneNumber = getIntent().getStringExtra("phoneNumber");
         binding.editTextUsernameSignUp.setText(phoneNumber);
         binding.editTextUsernameSignUp.setEnabled(false);
+
+
     }
 
     @SuppressLint("CheckResult")
@@ -56,16 +59,27 @@ public class SignupActivity extends AppCompatActivity {
         String confirmPass = binding.editTextConfirmPasswordSignUp.getText().toString() +"";
 
 
-        if(username.equals("")){
-            binding.errorPhoneRegister.setError("Không được để trống");
-            binding.editTextUsernameSignUp.requestFocus();
-            return;
-        }
+//        if(username.equals("")){
+//            binding.errorUsernameRegister.setError("Không được để trống");
+//            binding.editTextUsernameSignUp.requestFocus();
+//            return;
+//        }else{
+//            binding.errorUsernameRegister.setErrorEnabled(false);
+//
+//        }
 
         if(phone.equals("")){
-            binding.errorPhone1Register.setError("Không được để trống");
-            binding.editTextUsernameSignUp.requestFocus();
+            binding.errorPhoneRegister.setError("Không được để trống");
+            binding.editTextPhoneSignUp.requestFocus();
             return;
+        }else{
+            if(!phone.matches("^[0-9]{10}$")){
+                binding.errorPhoneRegister.setError("Số điện thoại là 10 số");
+                binding.editTextPhoneSignUp.requestFocus();
+                return;
+            }
+            binding.errorPhoneRegister.setErrorEnabled(false);
+
         }
 
         if(name.equals("")){
@@ -135,6 +149,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private void navigateToHome() {
         startActivity(new Intent(this, HomeActivity.class));
+        finish();
     }
 
     private void addEvents() {

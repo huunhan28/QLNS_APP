@@ -20,25 +20,29 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private FragmentChangePasswordScreenBinding binding;
     private UserViewModel userViewModel;
     String password="";
-
+    User user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentChangePasswordScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        user = AppUtils.getAccount2(this);
         setControls();
         setEvents();
     }
+
 
    
 
     private void setEvents() {
         binding.btnBackSignUp.setOnClickListener(view -> finish());
-        binding.btnEditProfileScreen.setOnClickListener(view ->
-                changePassword()
-         );
+        binding.btnEditProfileScreen.setOnClickListener(view ->{
+            RequestChangePassword request = getRequest();
+            if(request!=null)
+                // call api change
+                userViewModel.callChangePassword(request);
+        });
 
 
         // observer user change
@@ -73,10 +77,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     private void changePassword() {
         //get input
-        RequestChangePassword request = getRequest();
-        if(request!=null)
-            // call api change
-            userViewModel.callChangePassword(request);
+
     }
 
 
@@ -93,17 +94,24 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         RequestChangePassword request = new RequestChangePassword(username, oldPass, newPass, confirmPass);
 
-            if(!request.isValidOldPassword()){
-                binding.textInputCurrentPass.setError("Not empty.");
-                binding.editTextCurrentPassword.requestFocus();
-                return null;
-            }else{
-                binding.textInputCurrentPass.setErrorEnabled(false);
-            }
+        if(oldPass.equals("") || oldPass.length() < 6){
+            binding.textInputCurrentPass.setError("Mật khẩu ít nhất 6 kí tự");
+            binding.editTextCurrentPassword.requestFocus();
+            return null;
+        }else{
+            binding.textInputCurrentPass.setErrorEnabled(false);
+        }
+        String password = AppUtils.getPassword(this);
+        if(!oldPass.equals(password)){
+            binding.textInputCurrentPass.setError("Mật khẩu hiện tại không đúng");
+            binding.editTextCurrentPassword.requestFocus();
+            return null;
+        }else{
+            binding.textInputCurrentPass.setErrorEnabled(false);
+        }
 
 
-
-        if(!request.isValidNewPassword()){
+        if(newPass.equals("") || newPass.length() < 6){
             binding.textInputNewPass.setError("Mật khẩu ít nhất 6 kí tự");
             binding.editTextNewPassword.requestFocus();
             return null;
@@ -111,7 +119,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             binding.textInputNewPass.setErrorEnabled(false);
         }
 
-        if(!request.isValidConfirmPassword()){
+        if(!newPass.equals(confirmPass)){
             binding.textInputConfirmPass.setError("Mật khẩu không khớp");
             binding.editTextConfirmPass.requestFocus();
             return null;

@@ -46,7 +46,7 @@
             android:id="@+id/text_view_user_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Người đặt: Trung Hiền"
+            android:text="Người đặt: Hữu Nhân"
             >
 
         </TextView>

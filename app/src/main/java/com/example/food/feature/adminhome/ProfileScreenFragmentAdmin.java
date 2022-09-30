@@ -99,7 +99,7 @@ public class ProfileScreenFragmentAdmin extends Fragment {
         user = AppUtils.getAccount2(requireContext());
         if(user==null){
             binding.imgAvtProfileScreen.setImageResource(R.drawable.hashimoto);
-            binding.txtNameProfileScreen.setText("Arina Hashimoto");
+            binding.txtNameProfileScreen.setText("An");
             binding.txtUserNameProfileScreen.setText("uid:0988958279");
             binding.btnEditProfileScreen.setText("Sign in");
             checkUser=false;

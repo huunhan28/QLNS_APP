@@ -125,7 +125,8 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
             if (state.equals(AppUtils.orderState[0])) { // chưa duyệt
                 btnAccept.setVisibility(View.VISIBLE);
             } else if (state.equals(AppUtils.orderState[1])) { // đang giao
-                btnAccept.setVisibility(View.INVISIBLE);
+                setTitleButton("Đóng", "Đã nhận hàng");
+                btnAccept.setVisibility(View.VISIBLE);
             } else if (state.equals(AppUtils.orderState[2])) { // đã giao
                 btnAccept.setVisibility(View.INVISIBLE);
                 // check order commented
@@ -156,7 +157,9 @@ public class OrderDetailsFragment extends BottomSheetDialogFragment {
             }
         }
         txtOrderId.setText("Mã đơn hàng: " + mOrder.getId());
-        txtTotal.setText(AppUtils.formatCurrency(mOrder.getTotalPriceOfProducts()));
+        //txtTotal.setText(AppUtils.formatCurrency(mOrder.getTotalPriceOfProducts()));
+        txtTotal.setText(mOrder.getTotalPrice());
+
         txtProductName.setText(mOrder.getProductsName());
         txtDeliveryAddress.setText(mOrder.getUser().getAddress() + "");
         txtDeliveryPhone.setText(mOrder.getUser().getPhone() + "");

@@ -181,10 +181,16 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         LocationDomain locationDomain = AppUtils.getLocation(this);
         LocationDomain locationDomainShop = AppUtils.getLocationShop(this);
         float[] distance = new float[2];
-            Location.distanceBetween(10.84778505, 106.78470671,
-                    10.848354, 106.774406, distance);
-            int feeTemp = (int) (distance[0] / 1000 * feeDeliveryPerKm);
-        DeliveryFeeTxt.setText(feeTemp+"");
+        Location.distanceBetween(10.84778505, 106.78470671,
+                lat2, lon2, distance);
+        int feeTemp = (int) (distance[0] );
+        if (feeTemp > 30000){
+            DeliveryFeeTxt.setText(30000+"");
+        }else {
+            DeliveryFeeTxt.setText(feeTemp+"");
+        }
+
+
     }
 
     private void getMyLocation() {
@@ -224,7 +230,9 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
                 user = AppUtils.getAccount(getSharedPreferences(AppUtils.ACCOUNT, Context.MODE_PRIVATE));
 //                Order order = new Order(0,user,null,null,"Chua duyet");
                 if(user!=null) {
-                    OrdersDTO ordersDTO = new OrdersDTO(user.getId(), date, discountDTO.getId(), AppUtils.orderState[0]);// chưa duyệt
+                    String totalPrice ="0";
+                    totalPrice= txtTotalOrder.getText().toString();
+                    OrdersDTO ordersDTO = new OrdersDTO(user.getId(), date, discountDTO.getId(), AppUtils.orderState[0],totalPrice);// chưa duyệt
                     System.out.println(ordersDTO.toString());
 //
                     if(paymentType==0){
@@ -246,6 +254,7 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         btn_add_discount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String idDiscount = edit_discount.getText().toString().trim();
                 api.getDiscountById(discountResponseListener, idDiscount);
             }
@@ -356,7 +365,7 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         public void didFetch(OrderResponse response, String message) {
 //            Toast.makeText(CartListActivity.this, "Call api insert order success" + message.toString(), Toast.LENGTH_SHORT).show();
             Log.d("success", message.toString());
-            if(response.getStatus().equalsIgnoreCase("OK")) {
+            if(response.getStatus().equalsIgnoreCase("Ok")) {
                 alertDialog.dismiss();
                 api.deleteCartByUserId(deleteCartResponseListener, Integer.parseInt(user.getId() + ""));
                 alertDialog.dismiss();
@@ -364,16 +373,17 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
                         "Đặt hàng thành công");
             }else{
                 alertDialog.dismiss();
-                AppUtils.showSuccessDialog(CartListActivity.this,
-                        "Đặt hàng thất bại");
-                Toast.makeText(CartListActivity.this, "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
+                AppUtils.showErrorDialog(CartListActivity.this,
+                        "Đặt hàng thất bại",response.getMessage());
             }
         }
 
         @Override
         public void didError(String message) {
 //            Toast.makeText(CartListActivity.this,"Call api insert order error"+message.toString(),Toast.LENGTH_SHORT).show();
-            Log.d("API", message.toString());
+            alertDialog.dismiss();
+            AppUtils.showErrorDialog(CartListActivity.this,
+                    "Đặt hàng thất bại",message);
         }
     };
     private final InsertOrderDetailResponseListener insertOrderDetailResponseListener = new InsertOrderDetailResponseListener() {
@@ -402,17 +412,19 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
                 return;
             }
             if (discountDTO.getStartDate().before(today) && discountDTO.getEndDate().after(today)) {
+                btn_add_discount.setVisibility(View.GONE);
                 txtValueDiscount.setVisibility(View.VISIBLE);
                 txtSaleOfCart.setText("Giảm giá -  ");
                 txtValueDiscount.setText((int) (discountDTO.getPercent() * 100) + "");
-                Float totalItem = Float.parseFloat(txtTotalItemTemp.getText().toString());
-                txtTotalOrder.setText(totalItem * (1 - discountDTO.getPercent()) + "");
+                int totalOrder = Integer.parseInt(txtTotalOrder.getText().toString());
+                totalOrder = (int) (totalOrder * (1 - discountDTO.getPercent()));
+                txtTotalOrder.setText( totalOrder+ "");
                 return;
             }else{
                 txtSaleOfCart.setText("Mã giảm giá quá hạn -");
             }
 
-            if(discountDTO.getQuantity()<0){
+            if(discountDTO.getQuantity()==0){
                 txtSaleOfCart.setText("Hết lượt sử dụng -");
             }
 
@@ -425,10 +437,7 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
         @Override
         public void didError(String message) {
 //            Toast.makeText(CartListActivity.this,"Call api discount error"+message.toString(),Toast.LENGTH_SHORT).show();
-            if (edit_discount.getText().toString().trim() == "") {
-                txtValueDiscount.setText("0");
-                return;
-            }
+            txtSaleOfCart.setText("Mã giảm giá không tồn tại");
 //            txtValueDiscount.setText("This discount no available");
             return;
         }
@@ -457,8 +466,8 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
 //                    DeliveryFeeTxt.setText(AppUtils.formatCurrency(30000f));
 //                txtDeliveryItemTemp.setText("30000");
                 deliveryFee = Integer.parseInt(txtDeliveryItemTemp.getText().toString());
-                float all = itemTotalFee + deliveryFee;
-                txtTotalOrder.setText(AppUtils.formatCurrency(all));
+                int all = (int) (itemTotalFee + deliveryFee);
+                txtTotalOrder.setText(all+"");
             }
         }
 
@@ -479,11 +488,11 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
 
         float discount = Float.parseFloat(txtValueDiscount.getText().toString());
         float delivery = Float.parseFloat(txtDeliveryItemTemp.getText().toString());
-        float allFree = totalItem * (1 - discount / 100) + delivery;
+        int allFree = (int) (totalItem * (1 - discount / 100) + delivery);
         txtTotalItemTemp.setText(totalItem + "");
         ItemTotalFeeTxt.setText(AppUtils.formatCurrency(totalItem));
 
-        txtTotalOrder.setText(AppUtils.formatCurrency(allFree));
+        txtTotalOrder.setText(allFree+"");
 
 
     }
@@ -493,10 +502,12 @@ public class CartListActivity extends AppCompatActivity implements CardListAdapt
     public void onLocationChanged(@NonNull Location location) {
         lat2 = location.getLatitude();
         lon2 = location.getLongitude();
-        if(lat1!=0 && lon1!=0) {
+            Toast.makeText(this, "LOCATION:" + lon1 + "," + lat1 + "-" + lon2 + "," + lat2,Toast.LENGTH_SHORT).show();
             Log.d("NHAN", "LOCATION:" + lon1 + "," + lat1 + "-" + lon2 + "," + lat2);
-            mapViewModel.callGetDistanceFromTwoPlace(lon1, lat1, lon2, lat2, getString(R.string.mapbox_access_token));
-        }
+
+
+            //mapViewModel.callGetDistanceFromTwoPlace(lon1, lat1, lon2, lat2, getString(R.string.mapbox_access_token));
+
     }
 
     @Override
