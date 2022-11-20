@@ -60,6 +60,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -254,10 +255,13 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                String strSearch = charSequence.toString().replaceAll(" +", " ");
+
 
                 binding.scrollView3.scrollTo(0, heightScroll);
                 if (charSequence != null && charSequence.length() != 0) {
                     if (products.size() != 0) {
+                        productAdapter.submitList(Collections.emptyList());
                         productAdapter.submitList(products.stream()
                                 .filter(product -> product.getName().contains(charSequence))
                                 .collect(Collectors.toList()));
@@ -308,8 +312,6 @@ public class HomeActivity extends AppCompatActivity implements DiscountAdapter.C
         if(user != null){
             loadInfoUser(AppUtils.getAccount2(this));
         }
-
-
 
 
         mapViewModel.getClickLocation().observe(this,

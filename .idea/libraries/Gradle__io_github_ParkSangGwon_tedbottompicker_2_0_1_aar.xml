@@ -2,11 +2,15 @@
   <library name="Gradle: io.github.ParkSangGwon:tedbottompicker:2.0.1@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/de02a21f034c20d8086d1dd0392aaaaa/transformed/jetified-tedbottompicker-2.0.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/2bafe797e68568f3d56080023e3c042f/transformed/jetified-tedbottompicker-2.0.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/de02a21f034c20d8086d1dd0392aaaaa/transformed/jetified-tedbottompicker-2.0.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/de02a21f034c20d8086d1dd0392aaaaa/transformed/jetified-tedbottompicker-2.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/de02a21f034c20d8086d1dd0392aaaaa/transformed/jetified-tedbottompicker-2.0.1/res" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/2bafe797e68568f3d56080023e3c042f/transformed/jetified-tedbottompicker-2.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/2bafe797e68568f3d56080023e3c042f/transformed/jetified-tedbottompicker-2.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/2bafe797e68568f3d56080023e3c042f/transformed/jetified-tedbottompicker-2.0.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/modules-2/files-2.1/io.github.ParkSangGwon/tedbottompicker/2.0.1/da1e67f9a1cd9858f64318ca33b618c13f7ba7a/tedbottompicker-2.0.1-javadoc.jar!/" />

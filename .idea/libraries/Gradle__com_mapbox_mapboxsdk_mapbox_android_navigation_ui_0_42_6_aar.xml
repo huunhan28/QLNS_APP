@@ -2,11 +2,15 @@
   <library name="Gradle: com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/0d08b5583cf932d8f356db0768c97a13/transformed/jetified-mapbox-android-navigation-ui-0.42.6/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/390e54b1f247e8943042015a9a043e04/transformed/jetified-mapbox-android-navigation-ui-0.42.6/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/0d08b5583cf932d8f356db0768c97a13/transformed/jetified-mapbox-android-navigation-ui-0.42.6/res" />
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/0d08b5583cf932d8f356db0768c97a13/transformed/jetified-mapbox-android-navigation-ui-0.42.6/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/0d08b5583cf932d8f356db0768c97a13/transformed/jetified-mapbox-android-navigation-ui-0.42.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/390e54b1f247e8943042015a9a043e04/transformed/jetified-mapbox-android-navigation-ui-0.42.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/390e54b1f247e8943042015a9a043e04/transformed/jetified-mapbox-android-navigation-ui-0.42.6/res" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/390e54b1f247e8943042015a9a043e04/transformed/jetified-mapbox-android-navigation-ui-0.42.6/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-navigation-ui/0.42.6/f42b8336dd5bc6be5b2ab613479a6cbc33e68f3e/mapbox-android-navigation-ui-0.42.6-javadoc.jar!/" />

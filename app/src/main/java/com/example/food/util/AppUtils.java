@@ -47,10 +47,10 @@ import java.util.concurrent.Callable;
 public class AppUtils {
 
 
-   // public static String BASE_URL = "http://192.168.88.106:8080/";
+   public static String BASE_URL = "http://192.168.102.60:8080/";
 //    public static String BASE_URL = "http://10.10.1.126:8080/";
-//        public static String BASE_URL="http://192.168.0.117:8080/";
-        public static String BASE_URL="http://172.20.10.2:8080/";
+       // public static String BASE_URL="http://192.168.137.1:8080/";
+       // public static String BASE_URL="http://172.20.10.2:8080/";
     public static String[] ROLES = {"ROLE_USER", "ROLE_ADMIN"};
     public static int PASS_LOGIN = 0;
     public static String[] orderState = {"Chưa duyệt", "Đang giao", "Đã giao", "Đã hủy"};

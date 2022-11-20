@@ -2,11 +2,15 @@
   <library name="Gradle: com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/4ec685735e7bd68afe8e23a11fc020c7/transformed/jetified-mapbox-android-navigation-0.42.6/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/7613278be06a6bb91c82d8764dae553c/transformed/jetified-mapbox-android-navigation-0.42.6/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/4ec685735e7bd68afe8e23a11fc020c7/transformed/jetified-mapbox-android-navigation-0.42.6/res" />
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/4ec685735e7bd68afe8e23a11fc020c7/transformed/jetified-mapbox-android-navigation-0.42.6/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/4ec685735e7bd68afe8e23a11fc020c7/transformed/jetified-mapbox-android-navigation-0.42.6/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/7613278be06a6bb91c82d8764dae553c/transformed/jetified-mapbox-android-navigation-0.42.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/7613278be06a6bb91c82d8764dae553c/transformed/jetified-mapbox-android-navigation-0.42.6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/transforms-3/7613278be06a6bb91c82d8764dae553c/transformed/jetified-mapbox-android-navigation-0.42.6/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/AppData/Local/Android/Sdk/ndk/21.4.7075529/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-navigation/0.42.6/2c57c9666884b654a72059f79723ef3d43b89c8a/mapbox-android-navigation-0.42.6-javadoc.jar!/" />
